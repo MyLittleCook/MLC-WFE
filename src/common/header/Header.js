@@ -2,68 +2,68 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo/Logo_M.png';
+import SignInUp from '../popup/signInUp/SignInUp'
 import './Header.scss';
 
-const MenuItem = ({to, active, txt}) => {
-    return(
+const MenuItem = ({to, active, children}) => {
+    return (
         <Link to={to} className={`menu--itme--${active ? 'active' : ''}`}>
-            {txt}
+            {children}
         </Link>
     )
 }
 
-const SigninUpButtton = ({loggedIn, nickName}) => {
-    if(loggedIn) {
-        return (
-            <p>안녕하세요 {nickName}님</p>
-        )
-    } else {
-        return (
-            <a>로그인 / 회원가입</a>
-        )
-    }
-}
-
-
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            menuList: [
-                {txt: '홈', to: '/'},
-                {txt: '레시피', to: '/recipe'},
-                {txt: '레시피 공유', to: '/shareRecipe'},
-                {txt: '냉장고 관리', to: '/fridge'},
-                {txt: '커뮤니티', to: '/community'}
-            ]
-        }
+    state = {
+        menuList: [
+            {title: '홈', to: '/'},
+            {title: '레시피', to: '/recipe'},
+            {title: '레시피 공유', to: '/shareRecipe'},
+            {title: '냉장고 관리', to: '/fridge'},
+            {title: '커뮤니티', to: '/community'}
+        ],
+        isSignInUpOpen: false,
+        loggedIn: false
     }
-
+    
+    signInUpOpen = (e) => {
+        this.setState({
+            isSignInUpOpen: e
+        })
+    }
+    
     render() {
         const menuList = this.state.menuList.map(data => (
-            <MenuItem key={data.to} to={data.to} active={true} txt={data.txt}/>
+            <MenuItem key={data.to} to={data.to} active={true} children={data.title}/>
         ));
+
+        const openSignInUp = () => {
+            this.setState({
+                isSignInUpOpen: true
+            })
+        }
         
         return (
-            <header>
-                <section>
-                    <div>
-                        <a>
-                            <img src={logo} alt="logo"></img>
-                        </a>
-                    </div>
-                    <div>
-                        <nav>
-                            {menuList}
-                        </nav>
-                    </div>
-                </section>
-                <SigninUpButtton loggedIn={false} nickName='asdf' />
+            <>
+            <header className="header--wrapper">
+                <div className="header--logo">
+                    <Link>
+                        <img src={logo} alt="logo"></img>
+                    </Link>
+                </div>
+                <div className="header--menu">
+                    <nav>
+                        {menuList}
+                    </nav>
+                </div>
+                <div className="header--loginOut">
+                    {this.state.loggedIn ? <a>{nickName}님 로그아웃</a> : <a onClick={openSignInUp}>로그인 / 회원가입</a>}
+                </div>
             </header>
+            <SignInUp isOpen={this.state.isSignInUpOpen} onSubmit={this.signInUpOpen}/>
+            </>
         )
     }
 }
-
-
 
 export default Header;

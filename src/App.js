@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.scss';
 import Axios from 'axios';
-import Header from './common/header/Header'
+import Header from './common/header/Header';
 
-const element = (
-    <div>
-        <BrowserRouter>
-            <Header />
-        </BrowserRouter>
-    </div>
-);
 
 class App extends Component {
+    
     render() {
-        return element;
+        return (
+            <BrowserRouter>
+                <Header />
+                {/* <Route exact path="/" render={} />
+                <Route path="/recipe" render={} />
+                <Route path="/shareRecipe" render={} />
+                <Route path="/fridge" render={} />
+                <Route path="/community" render={} /> */}
+            </BrowserRouter>
+        );
     }
 }
 
