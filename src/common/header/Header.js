@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import logo from '../../assets/logo/Logo_M.png';
 import SignInUp from '../popup/signInUp/SignInUp'
 import './Header.scss';
 
-const MenuItem = ({to, active, children}) => {
+const MenuItem = ({to, children}) => {
     return (
-        <Link to={to} className={`menu--itme--${active ? 'active' : ''}`}>
+        <NavLink exact to={to} className={'header__menu__item'} activeClassName={'header__menu__item--active'}>
             {children}
-        </Link>
+        </NavLink>
     )
 }
 
@@ -33,8 +34,9 @@ class Header extends Component {
     }
     
     render() {
+        
         const menuList = this.state.menuList.map(data => (
-            <MenuItem key={data.to} to={data.to} active={true} children={data.title}/>
+            <MenuItem key={data.to} to={data.to} children={data.title}/>
         ));
 
         const openSignInUp = () => {
@@ -45,18 +47,18 @@ class Header extends Component {
         
         return (
             <>
-            <header className="header--wrapper">
-                <div className="header--logo">
-                    <Link>
+            <header className="header">
+                <div className="header__logo">
+                    <Link to="/">
                         <img src={logo} alt="logo"></img>
                     </Link>
                 </div>
-                <div className="header--menu">
+                <div className="header__menu">
                     <nav>
                         {menuList}
                     </nav>
                 </div>
-                <div className="header--loginOut">
+                <div className="header__login-out">
                     {this.state.loggedIn ? <a>{nickName}님 로그아웃</a> : <a onClick={openSignInUp}>로그인 / 회원가입</a>}
                 </div>
             </header>

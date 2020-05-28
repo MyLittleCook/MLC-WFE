@@ -43,9 +43,20 @@ module.exports = {
         test: /\.(png|svg|jp(e*)g|ico)$/,
         loader: 'url-loader',
         options: { 
-            limit: 8000,
-            name: 'images/[hash]-[name].[ext]'
+          limit: 8000,
+          name: 'images/[hash]-[name].[ext]'
         }
+      },
+      {
+        test: /\.ttf$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: './font/[hash].[ext]',
+            }
+          }
+        ]
       }
     ]
   },
