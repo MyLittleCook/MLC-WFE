@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import rotate from '../../assets/icon/rotate.png'
 import './HomeContainer.scss';
+import IntroContainer from './Intro/IntroContainer';
+
 
 class HomeContainer extends Component {
     state = {
@@ -17,16 +18,22 @@ class HomeContainer extends Component {
     }
 
     render() {
+
         return (
             <section className="home">
-                <section className="home__random-recipe">
-                    <div>
-                        <Link>{this.state.baseData.title}</Link>
-                        <img src={this.state.baseData.titleImageL}/>
-                    </div>
-                    <a className="home__random-recipe__button">
-                        <img src={rotate}/>
-                    </a>
+                <IntroContainer />
+                <section className="home__contents">
+                    <article>
+                        <div>
+                            <h2>사람들이 좋아하는 레시피</h2>
+                        </div>
+                        <div>
+                            <div>
+                                <img src={this.state.baseData.titleImageS}/>
+                                <h3>{this.state.baseData.title}</h3>
+                            </div>
+                        </div>
+                    </article>
                 </section>
             </section>
         )

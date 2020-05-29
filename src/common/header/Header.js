@@ -32,18 +32,18 @@ class Header extends Component {
             isSignInUpOpen: e
         })
     }
+
+    openSignInUp = () => {
+        this.setState({
+            isSignInUpOpen: true
+        })
+    }
     
     render() {
         
         const menuList = this.state.menuList.map(data => (
             <MenuItem key={data.to} to={data.to} children={data.title}/>
         ));
-
-        const openSignInUp = () => {
-            this.setState({
-                isSignInUpOpen: true
-            })
-        }
         
         return (
             <>
@@ -59,7 +59,7 @@ class Header extends Component {
                     </nav>
                 </div>
                 <div className="header__login-out">
-                    {this.state.loggedIn ? <a>{nickName}님 로그아웃</a> : <a onClick={openSignInUp}>로그인 / 회원가입</a>}
+                    {this.state.loggedIn ? <a>{nickName}님 로그아웃</a> : <a onClick={this.openSignInUp}>로그인 / 회원가입</a>}
                 </div>
             </header>
             <SignInUp isOpen={this.state.isSignInUpOpen} onSubmit={this.signInUpOpen}/>

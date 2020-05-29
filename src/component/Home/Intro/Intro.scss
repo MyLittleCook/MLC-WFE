@@ -1,0 +1,47 @@
+.home__intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 75px);
+    overflow: hidden;
+
+    &__text {
+        position: absolute;
+        top: 20vh;
+        left: 15vw;
+        width: 700px;
+        z-index: 1;
+        color: #FFFFFF;
+
+        &__title {
+            font-size: 4rem;
+        }
+
+        &__main {
+            margin-top: 30px;
+            width: 100%;
+            font-size: 1.5rem;
+            word-break: keep-all;
+            overflow: hidden;
+        }
+
+        &__btn {
+            display: inline-block;
+            margin-top: 40px;
+            border: 2px solid #FFFFFF;
+            padding: 10px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1.5rem;
+
+        }
+
+    }
+
+    &__bg {
+        width: 100%;
+        filter: brightness(25%);
+    }
+}
