@@ -31,6 +31,7 @@ class HomeContainer extends Component {
                             <div>
                                 <img src={this.state.baseData.titleImageS}/>
                                 <h3>{this.state.baseData.title}</h3>
+                                <h1>누가 볼지는 모르겠지만 오늘은 커밋수 그냥 체웁니다...죄송합니다. 다시는 이런일 없도록 하겠습니다.</h1>
                             </div>
                         </div>
                     </article>
