@@ -11,6 +11,7 @@ class HomeContainer extends Component {
             title: '새우 두부 계란찜',
             category: '반찬',
             calorie: '220kcal',
+            madeBy: 'teriyaki',
             titleImageL: 'http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00028_1.png',
             titleImageS: 'http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00028_2.png',
             ingredients: '새우두부계란찜 연두부 75g(3/4모), 칵테일새우 20g(5마리), 달걀 30g(1/2개), 생크림 13g(1큰술), 설탕 5g(1작은술), 무염버터 5g(1작은술) 고명 시금치 10g(3줄기)',
@@ -18,21 +19,24 @@ class HomeContainer extends Component {
     }
 
     render() {
-
+        const { baseData } = this.state;
         return (
             <section className="home">
                 <IntroContainer />
                 <section className="home__contents">
-                    <article>
-                        <div>
+                    <article className="home__contents__container">
+                        <div className="home__contents__container__title">
                             <h2>사람들이 좋아하는 레시피</h2>
                         </div>
-                        <div>
-                            <div>
-                                <img src={this.state.baseData.titleImageS}/>
-                                <h3>{this.state.baseData.title}</h3>
-                                <h1>누가 볼지는 모르겠지만 오늘은 커밋수 그냥 체웁니다...죄송합니다. 다시는 이런일 없도록 하겠습니다.</h1>
-                            </div>
+                        <div className="home__contents__container__item">
+                            <figure className="home__contents__container__item__box">
+                                <img src={baseData.titleImageS}/>
+                                <figcaption className="home__contents__container__item__box__">
+                                    <h3>{baseData.title}</h3>
+                                    <p>{baseData.category}</p>
+                                    <p>Recipe By {baseData.madeBy}</p>
+                                </figcaption>
+                            </figure>
                         </div>
                     </article>
                 </section>
