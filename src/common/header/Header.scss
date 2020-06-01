@@ -53,24 +53,13 @@
                 color: $hoverColor;
             }
             
-            &:after , &:before{
+            &:before, &:after {
                 content: "";
                 margin: auto;
                 position: absolute;
                 height: 100%;
                 box-sizing: border-box;
                 transition: height 1s ease-in-out;
-            }
-
-            &:after {
-                border: {
-                    top: $borderSize solid $borderColor;
-                    bottom: $borderSize solid $borderColor;
-                }
-                top: 0;
-                left: 50%;
-                width: 0;
-                transition: all 0.2s ease;
             }
 
             &:before {
@@ -85,19 +74,30 @@
                 transition-delay: 0.2s;
             }
 
+            &:after {
+                border: {
+                    top: $borderSize solid $borderColor;
+                    bottom: $borderSize solid $borderColor;
+                }
+                top: 0;
+                left: 50%;
+                width: 0;
+                transition: all 0.2s ease;
+            }
+
             &--active {
                 &:hover {
                     color: $color;
                 }
 
-                &:after {
-                    left: -$borderSize;
-                    width: calc(100% + 4px);
-                }
-
                 &:before {
                     top: 50%;
                     height: 0;
+                }
+
+                &:after {
+                    left: -$borderSize;
+                    width: calc(100% + 4px);
                 }
             }
         }

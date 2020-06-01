@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './HomeContainer.scss';
 import IntroContainer from './Intro/IntroContainer';
+import ContentsContainer from './contents/ContentsContainer';
 
 
 class HomeContainer extends Component {
@@ -23,23 +24,7 @@ class HomeContainer extends Component {
         return (
             <section className="home">
                 <IntroContainer />
-                <section className="home__contents">
-                    <article className="home__contents__container">
-                        <div className="home__contents__container__title">
-                            <h2>사람들이 좋아하는 레시피</h2>
-                        </div>
-                        <div className="home__contents__container__item">
-                            <figure className="home__contents__container__item__box">
-                                <img src={baseData.titleImageS}/>
-                                <figcaption className="home__contents__container__item__box__">
-                                    <h3>{baseData.title}</h3>
-                                    <p>{baseData.category}</p>
-                                    <p>Recipe By {baseData.madeBy}</p>
-                                </figcaption>
-                            </figure>
-                        </div>
-                    </article>
-                </section>
+                <ContentsContainer />
             </section>
         )
     }
