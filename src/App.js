@@ -8,6 +8,7 @@ import Recipe from './container/Recipe/RecipeContainer';
 import ShareRecipe from './container/ShareRecipe/ShareRecipe';
 import Fridge from './container/Fridge/FridgeContainer';
 import Community from './container/Community/CommunityContainer';
+import Footer from './common/Footer/Footer';
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
                 <Route path="/shareRecipe" component={ShareRecipe} />
                 <Route path="/fridge" component={Fridge} />
                 <Route path="/community" component={Community} />
+                <Footer />
             </BrowserRouter>
         );
     }

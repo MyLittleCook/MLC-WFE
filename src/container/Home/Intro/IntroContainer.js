@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import Intro from '../../../component/Home/Intro/Intro'
+import './IntroContainer.scss';
+import Intro from '../../../component/Home/Intro/Intro';
 
 import homeImg_0 from '../../../assets/img/homeImg_0.jpg';
 import homeImg_1 from '../../../assets/img/homeImg_1.jpg';
@@ -45,9 +46,9 @@ class IntroContainer extends Component {
     render() {
         const { contents, homeImg } = this.state;
         return (
-            <>
+            <section className="intro">
                 <Intro contents={contents[Math.floor(Math.random() * contents.length)]} imgSrc={homeImg[Math.floor(Math.random() * homeImg.length)]}/>
-            </>
+            </section>
         )
     }
 }

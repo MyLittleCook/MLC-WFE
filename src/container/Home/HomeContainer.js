@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './HomeContainer.scss';
 import IntroContainer from './Intro/IntroContainer';
 import ContentsContainer from './contents/ContentsContainer';
 

@@ -1,60 +1,70 @@
-.home__contents__container__item {
-    &__box {
-        margin-right: 20px;
-        border: 1px solid #000000;
-        position: relative;
-        height: 100%;
+.home .contents .container__item .box {
+    margin-right: 20px;
+    position: relative;
+    height: 100%;
 
-        img {
-            margin-bottom: 20px;
-            height: 200px;
-        }
+    img {
+        margin-bottom: 30px;
+        height: 200px;
+    }
 
-        &:hover &__txt {
-            top: 150px;
-        }
+    &:hover .box__txt {
+        top: 150px;
+    }
 
-        &__txt {
-            z-index: 1;
-            padding: 0 10px;
-            display: flex;
-            flex-direction: column;
+    &__txt {
+        z-index: 1;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 200px;
+        width: 100%;
+        height: 80px;
+        box-sizing: border-box;
+        background-color: #FFFFFF;
+        transition: top 300ms ease-in-out;
+        transition-delay: 300ms;
+
+        &:before {
+            content: '';
             position: absolute;
-            top: 200px;
+            left: 0;
+            bottom: 100%;
             width: 100%;
-            height: 80px;
-            box-sizing: border-box;
-            background-color: #FFFFFF;
-            transition: top 300ms ease-in-out;
+            height: 30px;
+            background: linear-gradient(0deg, #ffffff, #ffffff00);
+        }
+        
+        &__title {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            font: {
+                size: 1.3rem;
+                weight: bold;
+            }
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 30px;
+            overflow: hidden;
+        }
 
-            &:before {
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: 100%;
-                width: 100%;
-                height: 30px;
-                background: linear-gradient(0deg, #ffffff, #ffffff00);
-            }
-            
-            h3 {
-                display: inline-flex;
-                align-items: center;
-                position: relative;
-                width: 100%;
-                height: 30px;
-                font: {
-                    size: 1.3rem;
-                    weight: bold;
-                }
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-
-            p {
-                font-size: 1rem;
-            }
+        &__category {
+            height: 20px;
+            font-size: 1.1rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 20px;
+        }
+        
+        &__madeby {
+            margin-top: 10px;
+            height: 15px;
+            font-size: 0.8rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 20px;
         }
     }
 }

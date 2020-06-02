@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './ContentsContainer.scss'
 import Contents from '../../../component/Home/contents/Contents';
 import ContentsItemBox from '../../../component/Home/contents/ContentsItemBox'
 
@@ -52,12 +53,12 @@ class ContentsContainer extends Component {
         const { baseData } = this.state;
         const itemList = baseData.map((data, i) => <ContentsItemBox src={data.titleImageS} txt={{title: data.title, category: data.category, madeBy: data.madeBy}} key={i}/>)
         return (
-            <>
+            <section className="contents">
                 <Contents title="사람들이 좋아하는 레시피" itemList={itemList} />
                 <Contents title="사람들이 사랑하는 레시피" itemList={itemList} />
                 <Contents title="사람들이 많이 찾는 레시피" itemList={itemList} />
                 <Contents title="최근에 본 레시피" itemList={itemList} />
-            </>
+            </section>
         )
     }
 }

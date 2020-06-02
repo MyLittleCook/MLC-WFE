@@ -1,13 +1,5 @@
-.home__intro {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 75px);
-    overflow: hidden;
-
-    &__text {
+.home .intro {
+    .text {
         position: absolute;
         top: 20vh;
         left: 15vw;
@@ -39,7 +31,7 @@
 
     }
 
-    &__bg {
+    .bg {
         width: 100%;
         filter: brightness(25%);
     }
