@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
+import SearchContainer from './search/SearchContainer';
+import ListContainer from './list/ListContainer';
+
 class RecipeContainer extends Component {
 
     render() {
         return (
-            <h1>RecipeContainer</h1>
+            <section className="recipe">
+                <SearchContainer />
+                <ListContainer />
+            </section>
         )
     }
 }

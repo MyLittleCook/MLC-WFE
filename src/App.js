@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './App.scss';
-import Axios from 'axios';
 import Header from './common/header/Header';
 import Home from './container/Home/HomeContainer';
 import Recipe from './container/Recipe/RecipeContainer';

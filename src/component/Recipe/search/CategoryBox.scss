@@ -1,0 +1,85 @@
+.recipe .search .category {
+    .box {
+        border-radius: 5px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 150px;
+        height: 175px;
+        cursor: pointer;
+
+        &:before {
+            content: "";
+            border-radius: 5px;
+            position: absolute;
+            width: 135px;
+            height: 160px;
+            background-color: #ffffffc9;
+        }
+
+        &:hover div {
+            .box__icon {
+                display: none;
+            }
+
+            .box__iconC {
+                display: inline-block;
+            }
+        }
+
+        div{
+            position: relative;
+            z-index: 1;
+            width: 100px;
+            height: 100px;
+
+            img {
+                position: absolute;
+                width: 100px;
+            }
+            
+            .box__iconC {
+                display: none;
+            }
+        }
+
+        p {
+            z-index: 1;
+            font: {
+                size: 1.5rem;
+                weight: bold;
+            }
+        }
+    }
+
+    .index {
+        &0 {
+            background-color: #EB5757;
+        }
+        
+        &1 {
+            background-color: #F2994A;
+        }
+        
+        &2 {
+            background-color: #F2C94C;
+        }
+        
+        &3 {
+            background-color: #219653;
+        }
+        
+        &4 {
+            background-color: #2F80ED;
+        }
+        
+        &5 {
+            background-color: #56CCF2;
+        }
+        
+        &6 {
+            background-color: #9B51E0;
+        }
+    }
+}
