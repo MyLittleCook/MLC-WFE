@@ -7,11 +7,19 @@ import SignInUp from '../popup/signInUp/SignInUp'
 import './Header.scss';
 
 const MenuItem = ({to, children}) => {
-    return (
-        <NavLink exact to={to} className={'header__menu__item'} activeClassName={'header__menu__item--active'}>
-            {children}
-        </NavLink>
-    )
+    if(to === '/') {
+        return (
+            <NavLink exact to={to} className={'header__menu__item'} activeClassName={'header__menu__item--active'}>
+                {children}
+            </NavLink>
+        )
+    } else {
+        return (
+            <NavLink to={to} className={'header__menu__item'} activeClassName={'header__menu__item--active'}>
+                {children}
+            </NavLink>
+        )
+    }
 }
 
 class Header extends Component {
@@ -42,7 +50,7 @@ class Header extends Component {
     render() {
         
         const menuList = this.state.menuList.map(data => (
-            <MenuItem key={data.to} to={data.to} children={data.title}/>
+            <MenuItem to={data.to} children={data.title} key={data.to}/>
         ));
         
         return (

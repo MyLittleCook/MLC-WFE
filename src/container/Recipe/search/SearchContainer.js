@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './SearchContainer.scss';
 import Search from '../../../component/Recipe/Search/Search';
-import CategoryBox from '../../../component/Recipe/search/CategoryBox';
 
 import rice from '../../../assets/icon/rice.png';
 import sidedish from '../../../assets/icon/sidedish.png';
@@ -23,50 +22,63 @@ class SearchContainer extends Component {
     state = {
         categoryList: [
             {
+                name: 'rice',
                 icon: rice,
                 icon_C: rice_C,
                 txt: '밥',
             },
             {
+                name: 'sidedish',
                 icon: sidedish,
                 icon_C: sidedish_C,
                 txt: '반찬'
             },
             {
+                name: 'stew',
                 icon: stew,
                 icon_C: stew_C,
                 txt: '국 & 찌개'
             },
             {
+                name: 'dish',
                 icon: dish,
                 icon_C: dish_C,
                 txt: '일품'
             },
             {
+                name: 'fried',
                 icon: fried,
                 icon_C: fried_C,
                 txt: '튀김'
             },
             {
+                name: 'bread',
                 icon: bread,
                 icon_C: bread_C,
                 txt: '빵'
             },
             {
+                name: 'dessert',
                 icon: dessert,
                 icon_C: dessert_C,
                 txt: '후식'
             },
-        ]
+        ],
+        searchKeyword: ''
     }
 
     render() {
         const { categoryList } = this.state;
 
-        const category = categoryList.map((data, i) => <CategoryBox icon={data.icon} icon_C={data.icon_C} txt={data.txt} name={i} key={i}/>);
+        const changeSearchKeyword = (e) => {
+            this.setState({
+                searchKeyword: e
+            })
+        }
+        
         return (
             <section className="search">
-                <Search category={category}/>
+                <Search categoryList={categoryList} onSubmit={changeSearchKeyword}/>
             </section>
         )
     }

@@ -5,7 +5,7 @@ import RecipeBox from '../../../component/Recipe/list/RecipeBox';
 class ListContainer extends Component {
     render() {
         return (
-            <section>
+            <section className="list">
 
             </section>
         )
