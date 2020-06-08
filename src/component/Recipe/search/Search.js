@@ -69,7 +69,7 @@ class Search extends Component {
                 <article className="bar">
                     <div className={inputClicked ? 'bar--clicked' : 'bar--unclicked'}  onClick={this.inputClick} onBlur={this.inputClickOut}>
                         <img src={searchIcon}/>
-                        <input id="recipeSerchInput" type="text" placeholder={inputClicked ? '검색하실 레시피를 적어주세요.' : ''} onKeyDown={inputEnter}/>
+                        <input id="recipeSerchInput" type="text" placeholder={inputClicked ? '검색하실 레시피를 적어주세요.' : ''} onKeyDown={inputEnter} autoComplete="off"/>
                     </div>
                 </article>
                 <article className="category">
