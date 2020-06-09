@@ -1,0 +1,25 @@
+.recipe .list .wrapper__contents .recipe-box {
+    display: flex;
+    flex-direction: column;
+
+    &__img {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 210px;
+        background-color: #8C8C8C;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    &__txt {
+        padding: 15px 10px;
+        width: 100%;
+        height: 90px;
+        box-sizing: border-box;
+        background-color: #C4C4C4;
+    }
+}
