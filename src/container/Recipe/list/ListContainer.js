@@ -8,7 +8,7 @@ class ListContainer extends Component {
     render() {
         const { recipeList } = this.props;
         
-        const recipeBox = recipeList.map((data, i) => <RecipeBox titleImage={data.titleImageS} title={data.title} category={data.category} madeBy={data.madeBy} key={i}/>);
+        const recipeBox = recipeList.map((data, i) => <RecipeBox titleImage={data.titleImageS} title={data.title} category={data.category} madeBy={data.madeBy} type={data.type} key={i}/>);
 
         return (
             <section className="list">

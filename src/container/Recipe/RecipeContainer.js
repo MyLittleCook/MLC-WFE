@@ -7,6 +7,7 @@ class RecipeContainer extends Component {
 
     state = {
         baseData: {
+            type: 1,
             title: '새우 두부 계란찜',
             category: '반찬',
             calorie: '220kcal',

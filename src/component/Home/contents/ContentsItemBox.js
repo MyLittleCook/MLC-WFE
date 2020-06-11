@@ -10,7 +10,7 @@ const ContentsItemBox = ({ src, txt }) => {
             <figcaption className="box__txt">
                 <h3 className="box__txt__title">{txt.title}</h3>
                 <p className="box__txt__category">{txt.category}</p>
-                <p className="box__txt__madeby">Recipe By {txt.madeBy}</p>
+                <p className="box__txt__madeby">{`Recipe By ${txt.madeBy}`}</p>
             </figcaption>
             
         </figure>

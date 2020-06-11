@@ -53,19 +53,20 @@
 
         &__category {
             height: 20px;
-            font-size: 1.1rem;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            font: {
+                size: 1.1rem;
+                weight: bold;
+            }
             line-height: 20px;
         }
         
         &__madeby {
-            margin-top: 10px;
-            height: 15px;
+            margin-top: 13px;
             font-size: 0.8rem;
             text-overflow: ellipsis;
             white-space: nowrap;
-            line-height: 20px;
+            line-height: normal;
+            overflow: hidden;
         }
     }
 }

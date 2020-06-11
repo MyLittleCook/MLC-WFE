@@ -16,8 +16,8 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Header />
-                <Route exact path="/" component={Home} />
-                <Route path="/recipe" component={Recipe} />
+                <Route exact path="/recipe" component={Home} />
+                <Route path="/" component={Recipe} />
                 <Route path="/shareRecipe" component={ShareRecipe} />
                 <Route path="/fridge" component={Fridge} />
                 <Route path="/community" component={Community} />
