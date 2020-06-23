@@ -7,20 +7,20 @@ import RecipeBox from '../../../component/Recipe/list/RecipeBox';
 
 class ListContainer extends Component {
     state = {
-        start: 0,
+        startNum: 0,
     }
 
-    getData = () => {
-        axios.get('https://picsum.photos/list')
-        .then((response) => {
-            console.log(response);
-            let result = response.data.slice(this.state.start, this.state.end);
-            this.setState
-        })
-        .catch((request) => {
-            
-        })
-    }
+    // getData = () => {
+    //     axios.get('https://picsum.photos/list')
+    //     .then((response) => {
+    //         console.log(response);
+    //         let result = response.data.slice(this.state.start, this.state.end);
+    //         this.setState
+    //     })
+    //     .catch((request) => {
+
+    //     })
+    // }
 
     render() {
         const { recipeList } = this.props;
