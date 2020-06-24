@@ -1,6 +1,6 @@
 import { ADD_RECIPE_LIST } from '../actions/ActionsType'
 
-const defaultState = {
+const initialState = {
     recipeList: []
 };
 
@@ -13,4 +13,4 @@ function recipeList(state = defaultState, action) {
     }
 }
 
-exports default recipeList;
+export default recipeList;

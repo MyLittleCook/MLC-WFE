@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
+import { addRecipeList } from '../../../actions';
 
 import './ListContainer.scss'
 import ListWrapper from '../../../component/Recipe/list/ListWrapper';
@@ -10,17 +12,21 @@ class ListContainer extends Component {
         startNum: 0,
     }
 
-    // getData = () => {
-    //     axios.get('https://picsum.photos/list')
-    //     .then((response) => {
-    //         console.log(response);
-    //         let result = response.data.slice(this.state.start, this.state.end);
-    //         this.setState
-    //     })
-    //     .catch((request) => {
+    componentDidMount() {
+        this.getData()
+    }
 
-    //     })
-    // }
+    getData = () => {
+        axios.get('https://picsum.photos/list')
+        .then((response) => {
+            console.log(response);
+            let result = response.data.slice(this.state.start, this.state.start+20);
+
+        })
+        .catch((request) => {
+
+        })
+    }
 
     render() {
         const { recipeList } = this.props;
@@ -41,4 +47,10 @@ class ListContainer extends Component {
     }
 }
 
-export default ListContainer;
+const mapStateToProps = (state) => ({
+    user: state.user
+})
+
+export default connect(
+    mapStateToProps
+)(ListContainer);
