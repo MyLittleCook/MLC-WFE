@@ -1,4 +1,4 @@
-import { ADD_RECIPE_LIST } from '../actions/ActionsType'
+import { ADD_RECIPE_LIST } from '../actions/ActionTypes'
 
 const initialState = {
     recipeList: []

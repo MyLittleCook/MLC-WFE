@@ -1,8 +1,6 @@
-// import * as types from './ActionTypes';
-export const ADD_RECIPE_LIST = 'ADD_RECIPE_LIST';
-
+import * as types from './ActionTypes';
 
 export const addRecipeList = (data) => ({
-    type: ADD_RECIPE_LIST,
+    type: types.ADD_RECIPE_LIST,
     recipeList: data
 });

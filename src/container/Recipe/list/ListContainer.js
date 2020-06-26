@@ -9,10 +9,14 @@ import RecipeBox from '../../../component/Recipe/list/RecipeBox';
 
 class ListContainer extends Component {
     state = {
-        startNum: 0,
+        recipePage: 0,
+        loadingData: false
     }
+    
+    scrollArea = React.createRef();
 
     componentDidMount() {
+        const { current } = this.scrollArea.current;
         this.getData()
     }
 
@@ -34,9 +38,7 @@ class ListContainer extends Component {
         
         const recipeBox = recipeList.map((data, i) => <RecipeBox titleImage={data.titleImageS} title={data.title} category={data.category} madeBy={data.madeBy} type={data.type} key={i}/>);
 
-        this.getData();
         // let photosList = this.getData();
-        // console.log(photosList);
 
         // let recipeBox = photosList.map((data, i) => <RecipeBox titleImage={data.post_url} title={data.id} category={data.format} madeBy={data.author} type={0} key={i}/>)
 
