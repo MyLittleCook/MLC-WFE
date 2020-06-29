@@ -1,14 +1,15 @@
-.recipe .list .wrapper__contents .recipe-box {
+.recipe__list__wrapper__contents__recipe-box {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 10px #000000;
     overflow: hidden;
     cursor: pointer;
-    transition: box-shadow 200ms ease-in-out;
+    transition: all ease-in-out 200ms;
 
     &:hover {
         box-shadow: 0px 0px 20px #000000;
+        transform: scale(1.1);
     }
 
     &__img {

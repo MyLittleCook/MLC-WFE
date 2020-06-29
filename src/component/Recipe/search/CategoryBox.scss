@@ -1,5 +1,5 @@
-.recipe .search .category {
-    .box {
+.recipe__search__category {
+    &__box {
         border-radius: 5px;
         display: inline-flex;
         flex-direction: column;
@@ -71,42 +71,37 @@
     }
 
     .index {
-        &rice {
+        &-rice {
             background-color: #EB5757;
         }
         
-        &sidedish {
+        &-sidedish {
             background-color: #F2994A;
         }
         
-        &stew {
+        &-stew {
             background-color: #F2C94C;
         }
         
-        &dish {
+        &-dish {
             background-color: #219653;
         }
         
-        &fried {
+        &-fried {
             background-color: #2F80ED;
         }
         
-        &bread {
+        &-bread {
             background-color: #56CCF2;
         }
         
-        &dessert {
+        &-dessert {
             background-color: #9B51E0;
         }
     }
 
     .click {
         &rice, &sidedish, &stew, &dish, &fried, &bread, &dessert {
-
-            // &:before {
-            //     width: 100%;
-            //     height: 100%;
-            // }
 
             div {
                 .box__icon {

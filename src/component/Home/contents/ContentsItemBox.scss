@@ -1,4 +1,4 @@
-.home .contents .container__item .box {
+.home__contents__container__item__box {
     margin-right: 20px;
     position: relative;
     height: 100%;
@@ -9,7 +9,7 @@
         height: 200px;
     }
 
-    &:hover .box__txt {
+    &:hover &__txt {
         top: 150px;
     }
 

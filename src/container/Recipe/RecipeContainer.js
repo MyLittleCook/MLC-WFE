@@ -4,30 +4,11 @@ import SearchContainer from './search/SearchContainer';
 import ListContainer from './list/ListContainer';
 
 class RecipeContainer extends Component {
-
-    state = {
-        baseData: {
-            type: 1,
-            title: '새우 두부 계란찜',
-            category: '반찬',
-            calorie: '220kcal',
-            madeBy: 'teriyaki',
-            titleImageL: 'http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00028_1.png',
-            titleImageS: 'http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00028_2.png',
-            ingredients: '새우두부계란찜 연두부 75g(3/4모), 칵테일새우 20g(5마리), 달걀 30g(1/2개), 생크림 13g(1큰술), 설탕 5g(1작은술), 무염버터 5g(1작은술) 고명 시금치 10g(3줄기)',
-        },
-    }
-
     render() {
-        const { baseData } = this.state;
-        let recipeList = [];
-        for(let i = 0; i < 20; i++) {
-            recipeList.push(baseData);
-        }
         return (
             <section className="recipe">
                 <SearchContainer />
-                <ListContainer recipeList={recipeList} />
+                <ListContainer />
             </section>
         )
     }

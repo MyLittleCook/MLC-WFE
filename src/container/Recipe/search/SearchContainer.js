@@ -63,22 +63,15 @@ class SearchContainer extends Component {
                 icon_C: dessert_C,
                 txt: '후식'
             },
-        ],
-        searchKeyword: ''
+        ]
     }
 
     render() {
         const { categoryList } = this.state;
-
-        const changeSearchKeyword = (e) => {
-            this.setState({
-                searchKeyword: e
-            })
-        }
         
         return (
-            <section className="search">
-                <Search categoryList={categoryList} onSubmit={changeSearchKeyword}/>
+            <section className="recipe__search">
+                <Search categoryList={categoryList}/>
             </section>
         )
     }

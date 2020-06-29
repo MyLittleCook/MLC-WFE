@@ -46,7 +46,7 @@ class IntroContainer extends Component {
     render() {
         const { contents, homeImg } = this.state;
         return (
-            <section className="intro">
+            <section className="home__intro">
                 <Intro contents={contents[Math.floor(Math.random() * contents.length)]} imgSrc={homeImg[Math.floor(Math.random() * homeImg.length)]}/>
             </section>
         )

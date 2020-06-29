@@ -1,5 +1,5 @@
-.recipe .search {
-    .bar {
+.recipe__search {
+    &__bar {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -50,7 +50,7 @@
         }
     }
 
-    .category {
+    &__category {
         display: inline-flex;
         align-items: flex-start;
         justify-content: center;

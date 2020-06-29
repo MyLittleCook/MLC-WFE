@@ -1,5 +1,5 @@
-.home .intro {
-    .text {
+.home__intro {
+    &__text {
         position: absolute;
         top: 20vh;
         left: 15vw;
@@ -31,7 +31,7 @@
 
     }
 
-    .bg {
+    &__bg {
         width: 100%;
         min-width: 1920px;
         filter: brightness(25%);
