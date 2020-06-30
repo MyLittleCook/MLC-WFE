@@ -4,7 +4,7 @@ import './App.scss';
 import Header from './common/header/Header';
 import Home from './container/Home/HomeContainer';
 import Recipe from './container/Recipe/RecipeContainer';
-import ShareRecipe from './container/ShareRecipe/ShareRecipe';
+import ShareRecipe from './container/ShareRecipe/ShareRecipeContainer';
 import Fridge from './container/Fridge/FridgeContainer';
 import Community from './container/Community/CommunityContainer';
 import Footer from './common/Footer/Footer';
@@ -16,9 +16,9 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <Header />
-                <Route exact path="/" component={Home} />
+                <Route exact path="/shareRecipe" component={Home} />
                 <Route path="/recipe" component={Recipe} />
-                <Route path="/shareRecipe" component={ShareRecipe} />
+                <Route path="/" component={ShareRecipe} />
                 <Route path="/fridge" component={Fridge} />
                 <Route path="/community" component={Community} />
                 <Footer />
