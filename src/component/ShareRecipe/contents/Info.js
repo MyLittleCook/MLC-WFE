@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './Info.scss';
 
+import deleteIcon from '../../../assets/icon/delete.png';
+
 class Image extends Component {
     state = {
         file : '',
@@ -20,12 +22,19 @@ class Image extends Component {
         }
         reader.readAsDataURL(file);
     }
+
+    deleteImgFile = () => {
+        this.setState({
+            file : '',
+            previewURL : ''
+        })
+    }
+
     render() {
         return (
             <div className="share-recipe__contents__info__img">
-                <label for="shareRecipeImgUpload">사진 업로드</label>
                 <input type="file" id="shareRecipeImgUpload" accept="image/*" onChange={this.getImgFile}/>
-                {this.state.file !== '' ? <img className='share-recipe__contents__info__img__preview' src={this.state.previewURL} /> : null}
+                {this.state.file !== '' ? <><img className='share-recipe__contents__info__img__preview' src={this.state.previewURL} /><img className='share-recipe__contents__info__img__delete' src={deleteIcon} onClick={this.deleteImgFile} /></> : <label for="shareRecipeImgUpload">사진 업로드</label>}
             </div>
         )
     }
@@ -57,11 +66,11 @@ class Info extends Component {
                     <div className="share-recipe__contents__info__ingredient__list">
                         <div className="share-recipe__contents__info__ingredient__list__box">
                             <p>당근</p>
-                            <p>1kg</p>
+                            <p>디자인못생겼다.</p>
                         </div>
                         <div className="share-recipe__contents__info__ingredient__list__box">
                             <p>당근</p>
-                            <p>1kg</p>
+                            <p>프로토 타입이니까 괜찮아</p>
                         </div>
                         <div className="share-recipe__contents__info__ingredient__list__box">
                             <p>당근</p>
