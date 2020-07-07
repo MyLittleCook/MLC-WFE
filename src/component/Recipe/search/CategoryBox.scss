@@ -71,37 +71,37 @@
     }
 
     .index {
-        &-rice {
+        &-all {
             background-color: #EB5757;
         }
         
-        &-sidedish {
+        &-rice {
             background-color: #F2994A;
         }
         
-        &-stew {
+        &-sidedish {
             background-color: #F2C94C;
         }
         
-        &-dish {
+        &-stew {
             background-color: #219653;
         }
         
-        &-fried {
+        &-dish {
             background-color: #2F80ED;
         }
         
-        &-bread {
+        &-dessert {
             background-color: #56CCF2;
         }
         
-        &-dessert {
+        &-etc {
             background-color: #9B51E0;
         }
     }
 
     .click {
-        &rice, &sidedish, &stew, &dish, &fried, &bread, &dessert {
+        &all, &rice, &sidedish, &stew, &dish, &dessert, &etc {
 
             div {
                 .box__icon {
