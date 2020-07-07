@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import logo from '../../assets/logo/Logo_M.png';
-import SignInUp from '../popup/signInUp/SignInUp'
+import SignInUp from '../modal/signInUp/SignInUp'
 import './Header.scss';
 
 const MenuItem = ({to, children}) => {
