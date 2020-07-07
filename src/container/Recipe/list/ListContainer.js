@@ -54,12 +54,27 @@ class ListContainer extends Component {
         .catch((request) => {
 
         })
+        
+        // axios.get('https://mlc.janghoseung.com/recipe')
+        // .then((response) => {
+        //     response.result.forEach(d => {
+        //         this.list.push(d);
+        //     });
+        //     addRecipeList(this.list);
+        //     this.setState({
+        //         loadingData: false
+        //     })
+        // })
+        // .catch((request) => {
+
+        // })
     }
 
     render() {
         const { recipeListArray } = this.props;
 
         let recipeBox = recipeListArray.map((data, i) => <RecipeBox titleImage={`https://picsum.photos/350/300/?image=${data.id}`} title={data.id} category={data.format} madeBy={data.author} type={0} key={i}/>)
+        // let recipeBox = recipeListArray.map((data, i) => <RecipeBox titleImage={data.recipeImage} title={data.name} category={data.category} madeBy={data.author.nickname} type={data.category === "밥" ? 0 : (data.category === "반찬" ? 1 : (data.category === "국 & 찌개" ? 2 : (data.category === "일품" ? 3 : (data.category === "후식" ? 4 : 5))))} key={i}/>)
 
 
         return (

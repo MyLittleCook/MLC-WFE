@@ -33,7 +33,7 @@ class StepBoxImage extends Component {
         const { stepId } = this.props;
         return (
             <div className="share-recipe__contents__step__list__box__wrapper__img">
-                <input type="file" id={"shareRecipeImgUpload"+stepId} accept="image/*"/>
+                <input type="file" id={"shareRecipeImgUpload"+stepId} accept="image/*" onChange={this.getImgFile}/>
                 {this.state.file !== '' ? <><img className='share-recipe__contents__step__list__box__wrapper__img__preview' src={this.state.previewURL} /><img className='share-recipe__contents__step__list__box__wrapper__img__delete' src={deleteIcon} onClick={this.deleteImgFile} /></> : <label for={"shareRecipeImgUpload"+stepId}>사진 업로드</label>}
             </div>
         )
@@ -43,7 +43,7 @@ class StepBoxImage extends Component {
 const StepBox = ({stepId}) => {
     return (
         <div className="share-recipe__contents__step__list__box">
-            <div className="share-recipe__contents__step__list__box__title"><h3>Step 1</h3></div>
+            <div className="share-recipe__contents__step__list__box__title"><h3>{`Step ${stepId}`}</h3></div>
             <div className="share-recipe__contents__step__list__box__wrapper">
                 <StepBoxImage stepId={stepId} />
                 <div className="share-recipe__contents__step__list__box__wrapper__text">
@@ -56,14 +56,14 @@ const StepBox = ({stepId}) => {
 
 class Step extends Component {
     state = {
-        stepList: [<StepBox stepId={0}/>]
+        stepList: [<StepBox stepId={1}/>]
     }
 
     render() {
         const { stepList } = this.state;
         const addStep = () => {
             this.setState({
-                stepList: stepList.push(<StepBox stepId={stepList.length}/>)
+                stepList: [...stepList, <StepBox stepId={stepList.length+1}/>]
             })
             
         }
