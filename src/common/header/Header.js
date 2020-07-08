@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import logo from '../../assets/logo/Logo_M.png';
-import SignInUp from '../modal/signInUp/SignInUp'
+import SignInUp from '../modal/SignInUp'
 import './Header.scss';
 
 const MenuItem = ({to, children}) => {
