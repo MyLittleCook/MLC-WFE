@@ -6,7 +6,7 @@ class IngredientModal extends Component {
     render() {
         const { openIngredientModal } = this.props;
 
-        const removeEvent = () => {
+        const removeEvent = (e) => {
             e.stopPropagation();
         }
 
@@ -21,7 +21,7 @@ class IngredientModal extends Component {
                         <input type="text" placeholder="식재료 이름" />
                     </div>
                     <div className="ingredient-modal__box__description">
-                        <input type="text" placeholder="식재료 설명" />
+                        <textarea placeholder="식재료 설명"></textarea>
                     </div>
                 </div>
             </div>

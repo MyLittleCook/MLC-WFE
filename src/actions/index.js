@@ -9,3 +9,8 @@ export const addRecipeList = (data) => ({
     type: types.ADD_RECIPE_LIST,
     recipeList: data
 });
+
+export const setShareRecipeData = (data) => ({
+    type: types.SET_SHARE_RECIPE_DATA,
+    shareRecipeData: data
+});
