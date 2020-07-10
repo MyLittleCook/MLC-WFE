@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { addRecipeList } from '../../../actions/index.js';
+import { addRecipeList } from '../../../actions/index';
 
 import './ListContainer.scss';
 import ListWrapper from '../../../component/Recipe/list/ListWrapper';

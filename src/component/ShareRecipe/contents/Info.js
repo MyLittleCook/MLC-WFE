@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setShareRecipeData } from '../../../actions/index';
 
 import './Info.scss';
 import IngredientModal from '../modal/IngredientModal';
@@ -45,6 +47,14 @@ class Info extends Component {
     state = {
         IngredientModalShow: false,
         data_category: '기타'
+    }
+
+    componentDidMount() {
+        const { shareRecipeDataObj } = this.props;
+        shareRecipeDataObj.name = 'hi';
+        console.log(shareRecipeDataObj)
+        // let asdf = shareRecipeDataObj;
+        // console.log(asdf)
     }
 
     categoryChange = (e) => {
@@ -104,4 +114,15 @@ class Info extends Component {
     }
 }
 
-export default Info;
+const mapStateToProps = (state) => ({
+    shareRecipeDataObj: state.share.shareRecipeData
+})
+
+const mapDispatchToProps = dispatch => ({
+    setShareRecipeData: recipe => dispatch(setShareRecipeData(recipe))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Info);
