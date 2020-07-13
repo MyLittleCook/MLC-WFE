@@ -94,8 +94,9 @@
         border: 2px solid #000000;
         display: inline-flex;
         flex-direction: column;
-        min-width: 300px;
+        width: 300px;
         height: 100%;
+        min-width: 300px;
 
         &__top {
             border-bottom: 2px solid #000000;

@@ -4,18 +4,18 @@ const initialState = {
     shareRecipeData: {
         name: '',
         ingredients: [ 
-            {
-                name: '',
-                detail: ''
-            },
+            // {
+            //     name: '',
+            //     detail: ''
+            // },
         ],
         category: '',
-        recipeImage: '',
+        recipeImage: null,
         steps: [
-            {
-                stepImage: '',
-                content: '',
-            },
+            // {
+            //     stepImage: '',
+            //     content: '',
+            // },
         ]
     }
 };

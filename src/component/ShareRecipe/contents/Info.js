@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setShareRecipeData } from '../../../actions/index';
 
 import './Info.scss';
 import IngredientModal from '../modal/IngredientModal';
 
 import deleteIcon from '../../../assets/icon/delete.png';
 
-class Image extends Component {
+class Info extends Component {
     state = {
-        file : '',
-        previewURL : ''
+        IngredientModalShow: false,
+        file : null,
+        previewURL : '',
+        data_category: '기타'
     }
 
     getImgFile = (e) => {
@@ -22,42 +23,25 @@ class Image extends Component {
                 file : file,
                 previewURL : reader.result
             })
+            this.props.shareRecipeDataObj.recipeImage = this.state.file;
+            console.log(this.state.file);
         }
         reader.readAsDataURL(file);
     }
 
     deleteImgFile = () => {
         this.setState({
-            file : '',
+            file : null,
             previewURL : ''
         })
     }
 
-    render() {
-        return (
-            <div className="share-recipe__contents__info__img">
-                <input type="file" id="shareRecipeImgUpload" accept="image/*" onChange={this.getImgFile}/>
-                {this.state.file !== '' ? <><img className='share-recipe__contents__info__img__preview' src={this.state.previewURL} /><img className='share-recipe__contents__info__img__delete' src={deleteIcon} onClick={this.deleteImgFile} /></> : <label htmlFor="shareRecipeImgUpload">사진 업로드</label>}
-            </div>
-        )
-    }
-}
-
-class Info extends Component {
-    state = {
-        IngredientModalShow: false,
-        data_category: '기타'
-    }
-
-    componentDidMount() {
-        const { shareRecipeDataObj } = this.props;
-        shareRecipeDataObj.name = 'hi';
-        console.log(shareRecipeDataObj)
-        // let asdf = shareRecipeDataObj;
-        // console.log(asdf)
+    nameChange = (e) => {
+        this.props.shareRecipeDataObj.name = e.target.value;
     }
 
     categoryChange = (e) => {
+        this.props.shareRecipeDataObj.category = e.target.value;
         this.setState({
             data_category: e.target.value
         })
@@ -70,13 +54,18 @@ class Info extends Component {
     }
 
     render() {
+        const ingredientList = this.props.shareRecipeDataObj.ingredients.map((d, i) => <div className="share-recipe__contents__info__ingredient__list__box" key={i}><p>{d.name}</p><p>{d.detail}</p></div>);
+
         return(
             <>
             <article className="share-recipe__contents__info">
-                <Image />
+                <div className="share-recipe__contents__info__img">
+                    <input type="file" id="shareRecipeImgUpload" accept="image/*" onChange={this.getImgFile}/>
+                    {this.state.file !== null ? <><img className='share-recipe__contents__info__img__preview' src={this.state.previewURL} /><img className='share-recipe__contents__info__img__delete' src={deleteIcon} onClick={this.deleteImgFile} /></> : <label htmlFor="shareRecipeImgUpload">사진 업로드</label>}
+                </div>
                 <div className="share-recipe__contents__info__etc">
                     <label className="share-recipe__contents__info__etc__title" htmlFor="shareRecipeName">레시피 이름</label>
-                    <input className="share-recipe__contents__info__etc__box" id="shareRecipeName" type="text"/>
+                    <input className="share-recipe__contents__info__etc__box" id="shareRecipeName" type="text" onBlur={this.nameChange}/>
                     <label className="share-recipe__contents__info__etc__title" htmlFor="shareRecipeCategory">카테고리</label>
                     <select className="share-recipe__contents__info__etc__box" id="shareRecipeCategory" value={this.state.data_category} onChange={this.categoryChange}>
                         <option value="밥">밥</option>
@@ -93,7 +82,8 @@ class Info extends Component {
                         <button onClick={() => {this.openIngredientModal(true)}}></button>
                     </div>
                     <div className="share-recipe__contents__info__ingredient__list">
-                        <div className="share-recipe__contents__info__ingredient__list__box">
+                        {ingredientList.length !== 0 ? ingredientList : <div className="share-recipe__contents__info__ingredient__list__box">등록된 재료가 없습니다.</div>}
+                        {/* <div className="share-recipe__contents__info__ingredient__list__box">
                             <p>당근</p>
                             <p>디자인못생겼다.</p>
                         </div>
@@ -104,7 +94,7 @@ class Info extends Component {
                         <div className="share-recipe__contents__info__ingredient__list__box">
                             <p>당근</p>
                             <p>1kg</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </article>
@@ -118,11 +108,6 @@ const mapStateToProps = (state) => ({
     shareRecipeDataObj: state.share.shareRecipeData
 })
 
-const mapDispatchToProps = dispatch => ({
-    setShareRecipeData: recipe => dispatch(setShareRecipeData(recipe))
-})
-
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(Info);
