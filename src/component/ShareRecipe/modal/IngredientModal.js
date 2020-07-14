@@ -12,13 +12,13 @@ class IngredientModal extends Component {
 
     ingredientNameChanged = (e) => {
         this.setState({
-            ingredientName: e.target.value
+            ingredientName: e.target.value.trim()
         })
     }
 
     ingredientDesChanged = (e) => {
         this.setState({
-            ingredientDes: e.target.value
+            ingredientDes: e.target.value.trim()
         })
     }
 
@@ -55,7 +55,7 @@ class IngredientModal extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     shareRecipeDataObj: state.share.shareRecipeData
 })
 

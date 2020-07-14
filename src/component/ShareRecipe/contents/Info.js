@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setRecipeImageFile } from '../../../actions/index';
 
 import './Info.scss';
 import IngredientModal from '../modal/IngredientModal';
@@ -23,7 +24,7 @@ class Info extends Component {
                 file : file,
                 previewURL : reader.result
             })
-            this.props.shareRecipeDataObj.recipeImage = this.state.file;
+            this.props.setRecipeImageFile(this.state.file);
             console.log(this.state.file);
         }
         reader.readAsDataURL(file);
@@ -34,10 +35,11 @@ class Info extends Component {
             file : null,
             previewURL : ''
         })
+        this.props.setRecipeImageFile(null);
     }
 
     nameChange = (e) => {
-        this.props.shareRecipeDataObj.name = e.target.value;
+        this.props.shareRecipeDataObj.name = e.target.value.trim();;
     }
 
     categoryChange = (e) => {
@@ -104,10 +106,15 @@ class Info extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     shareRecipeDataObj: state.share.shareRecipeData
 })
 
+const mapDispatchToProps = dispatch => ({
+    setRecipeImageFile: img => dispatch(setRecipeImageFile(img))
+})
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Info);

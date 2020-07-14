@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { addRecipeList } from '../../../actions/index';
 
 import './ListContainer.scss';
@@ -71,7 +71,7 @@ class ListContainer extends Component {
             })
         })
         .catch((reject) => {
-            // alert(reject)
+            console.log(reject)
         })
     }
 
