@@ -1,4 +1,4 @@
-import { SET_SHARE_RECIPE_DATA } from '../actions/ActionTypes'
+import { SET_SHARE_RECIPE_DATA } from '../actions/ActionTypes';
 
 const initialState = {
     shareRecipeData: {
@@ -10,12 +10,12 @@ const initialState = {
             // },
         ],
         category: '',
-        recipeImage: null,
+        recipeImage: '',
         steps: [
-            // {
-            //     stepImage: '',
-            //     content: '',
-            // },
+            {
+                stepImage: '',
+                content: '',
+            },
         ]
     }
 };
