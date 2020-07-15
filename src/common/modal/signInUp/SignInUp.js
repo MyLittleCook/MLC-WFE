@@ -34,7 +34,6 @@ class SignInUp extends Component {
                         </div>
                         <div className="signInUp__contents">
                             {this.state.page === 'in' ? <SignIn /> : <SignUp />}
-                            {/* <div className="signInUp__contents__warning"><p>이메일 또는 비밀번호를 다시 확인하세요. 등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다.</p></div> */}
                         </div>
                         <div className="signInUp__or">또는</div>
                         <div className="signInUp__change">
