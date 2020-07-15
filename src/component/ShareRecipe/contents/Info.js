@@ -25,7 +25,6 @@ class Info extends Component {
                 previewURL : reader.result
             })
             this.props.setRecipeImageFile(this.state.file);
-            console.log(this.state.file);
         }
         reader.readAsDataURL(file);
     }

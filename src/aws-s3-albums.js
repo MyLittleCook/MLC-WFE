@@ -17,7 +17,6 @@ var s3 = new AWS.S3({
 export const createAlbum = (albumName) => {
     let date = new Date();
     albumName = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}-${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}_${albumName.trim().replace(/ /g, "_")}`;
-    console.log('first: ',albumName)
     if (!albumName) {
         return alert("Album names must contain at least one non-space character.");
     }
@@ -25,25 +24,24 @@ export const createAlbum = (albumName) => {
         return alert("Album names cannot contain slashes.");
     }
     var albumKey = encodeURIComponent(albumName);
-    s3.headObject({ Key: albumKey }, function(err, data) {
+    s3.headObject({ Key: albumKey }, (err, data) => {
         if (!err) {
             return alert("Album already exists.");
         }
         if (err.code !== "NotFound") {
             return alert("There was an error creating your album: " + err.message);
         }
-        s3.putObject({ Key: albumKey }, function(err, data) {
+        s3.putObject({ Key: albumKey }, (err, data) => {
             if (err) {
                 return alert("There was an error creating your album: " + err.message);
             }
             console.log("Successfully created album.");
-            console.log('second: ', albumName)
-            return (albumName);
         });
     });
+    return albumName;
 }
 
-export const addPhoto = (albumName, file) => {
+export const addPhoto = async (albumName, file) => {
     if (!file) {
         return alert('Please choose a file to upload first.');
     }
@@ -63,13 +61,17 @@ export const addPhoto = (albumName, file) => {
 
     let promise = upload.promise();
 
-    promise.then(
+    var dataLocation = '';
+
+    await promise.then(
         (data) => {
             console.log("Successfully uploaded photo.");
-            console.log(data.Location)
+            dataLocation = data.Location;
         },
         (err) => {
             return alert("There was an error uploading your photo: ", err.message);
         }
     );
+
+    return dataLocation;
 }

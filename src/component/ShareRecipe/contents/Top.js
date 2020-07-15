@@ -2,24 +2,40 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setShareRecipeData } from '../../../actions/index';
 import { createAlbum, addPhoto } from '../../../aws-s3-albums';
+import { toast } from 'react-toastify';
 
 import './Top.scss';
 
 class Top extends Component {
 
-    shareRecipe = async () => {
+    shareRecipe = () => {
         const { shareRecipeDataObj, recipeImage, stepImages } = this.props;
-        console.log(shareRecipeDataObj)
-        
-        let albumName = await createAlbum(shareRecipeDataObj.name);
-        setTimeout(() => {
-            console.log('last: ', albumName);
-        }, 1000)
-        
 
-        // if(recipeImage !== null) {
-        //     shareRecipeDataObj.recipeImage = ;
-        // }
+        if(shareRecipeDataObj.name < 1) {
+            toast.warn("레시피 이름은 1글자 이상이여야 합니다.");
+        } else {
+            let albumName = createAlbum(shareRecipeDataObj.name);
+            
+            let mainImage = new File([recipeImage], `${albumName}_0`, {
+                type: recipeImage.type,
+                lastModified: recipeImage.lastModified
+            })
+    
+            addPhoto(albumName, mainImage).then(url => {
+                shareRecipeDataObj.recipeImage = url;
+            })
+            
+            stepImages.forEach((v, i) => {
+                let stepImage = new File([v], `${albumName}_${i+1}`, {
+                    type: v.type,
+                    lastModified: v.lastModified
+                })
+                addPhoto(albumName, stepImage).then(url => {
+                    shareRecipeDataObj.steps[i].stepImage = url;
+                });
+            });
+            console.log(shareRecipeDataObj);
+        }
     }
 
     render() {
