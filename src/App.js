@@ -3,6 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setIsSignIn, setNickName } from './actions/index';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
 import Header from './common/header/Header';
 import Home from './container/Home/HomeContainer';
@@ -59,6 +61,7 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
+                <ToastContainer />
                 <Header />
                 <Route exact path="/" component={Home} />
                 <Route path="/recipe" component={Recipe} />
