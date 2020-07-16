@@ -9,7 +9,7 @@ const initialState = {
             //     detail: ''
             // },
         ],
-        category: '',
+        category: '기타',
         recipeImage: '',
         steps: [
             {
