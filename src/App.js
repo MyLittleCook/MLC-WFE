@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setIsSignIn, setNickName } from './actions/index';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
 import Header from './common/header/Header';
@@ -27,13 +27,14 @@ class App extends Component {
         const { setIsSignIn } = this.props;
         axios.get('https://mlc.janghoseung.com/token', {
             headers: {
-                authorization: localStorage.getItem("RFT")
+                Authorization: localStorage.getItem("RFT")
             }
         })
         .then(response => {
             sessionStorage.setItem('ACT', response.data.result.accessToken);
             this.getInfo();
             setIsSignIn(true);
+            toast.success('자동 로그인 성공!');
         })
         .catch(reject => {
             console.log(reject);
@@ -45,7 +46,7 @@ class App extends Component {
         
         axios.get('https://mlc.janghoseung.com/user/info', {
             headers: {
-                authorization: sessionStorage.getItem("ACT")
+                Authorization: sessionStorage.getItem("ACT")
             }
         })
         .then(response => {
@@ -56,8 +57,6 @@ class App extends Component {
         })
     }
 
-
-    
     render() {
         return (
             <BrowserRouter>
