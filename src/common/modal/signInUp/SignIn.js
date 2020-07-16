@@ -79,7 +79,7 @@ class SignIn extends Component {
         
         axios.get('https://mlc.janghoseung.com/user/info', {
             headers: {
-                authorization: sessionStorage.getItem("ACT")
+                Authorization: sessionStorage.getItem("ACT")
             }
         })
         .then(response => {
