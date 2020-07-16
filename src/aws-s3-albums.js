@@ -41,37 +41,24 @@ export const createAlbum = (albumName) => {
     return albumName;
 }
 
-export const addPhoto = async (albumName, file) => {
-    if (!file) {
-        return alert('Please choose a file to upload first.');
+export const addPhoto = async (file) => {
+    let photoKey = file.name;
+  
+    try {
+        const data = await new AWS.S3.ManagedUpload({
+            params: {
+                Bucket: albumBucketName,
+                Key: photoKey,
+                Body: file,
+                ACL: "public-read",
+                ContentType: 'image/png'
+            }
+        }).promise();
+        console.log(data);
+    
+        console.log("Successfully uploaded photo.");
+        return data.Location;
+    } catch (err) {
+        return alert("업로드 못함ㅅㄱ");
     }
-    let fileName = file.name;
-    let albumPhotosKey = encodeURIComponent(albumName) + "/";
-  
-    let photoKey = albumPhotosKey + fileName;
-  
-    let upload = new AWS.S3.ManagedUpload({
-        params: {
-            Bucket: albumBucketName,
-            Key: photoKey,
-            Body: file,
-            ACL: "public-read"
-        }
-    });
-
-    let promise = upload.promise();
-
-    var dataLocation = '';
-
-    await promise.then(
-        (data) => {
-            console.log("Successfully uploaded photo.");
-            dataLocation = data.Location;
-        },
-        (err) => {
-            return alert("There was an error uploading your photo: ", err.message);
-        }
-    );
-
-    return dataLocation;
 }
