@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setShareRecipeData } from '../../../actions/index';
-import { createAlbum, addPhoto } from '../../../aws-s3-albums';
+import { addPhoto } from '../../../aws-s3-albums';
 import { toast } from 'react-toastify';
 
 import './Top.scss';
@@ -65,7 +65,7 @@ class Top extends Component {
     }
 
     uploadRecipe = () => {
-        const { name, ingredients, category, recipeImage, steps } = this.props.shareRecipeDataObj
+        const { name, ingredients, category, recipeImage, steps } = this.props.shareRecipeDataObj;
         
         axios.post('https://mlc.janghoseung.com/recipe', {
             name: name,
