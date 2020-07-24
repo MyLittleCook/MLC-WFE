@@ -1,0 +1,93 @@
+.fridge__list {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 60%;
+        height: 70%;
+        background-color: #C4C4C4;
+        overflow: hidden;
+    }
+
+    &__top {
+        padding: 0 5px 0 35px;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        background-color: #E5E5E5;
+        font: {
+            size: 1.2rem;
+            family: NotoSans;
+            weight: bold;
+        }
+
+        &__name {
+            width: 20%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &__info {
+            width: 54%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &__shelf-life {
+            width: 16%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &__add-button {
+            margin-left: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: #000000;
+                transform: rotate(90deg);
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: #000000;
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__contents {
+        box-sizing: border-box;
+        padding: 20px 23px;
+        width: 100%;
+        height: calc(100% - 50px);
+        overflow-y: scroll;
+        
+        > div {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
