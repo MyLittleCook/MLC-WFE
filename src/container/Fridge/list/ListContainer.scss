@@ -1,0 +1,9 @@
+.fridge__list {
+    box-sizing: border-box;
+    padding-top: 10vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100vw;
+    height: calc(100vh - 75px);
+}
