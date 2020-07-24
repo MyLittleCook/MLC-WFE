@@ -14,7 +14,7 @@ class IntroContainer extends Component {
     state = {
         contents: [
             {
-                text: '일단 아무 텍스트나 적는다 다양한 사람들의 다양한 레시피들을 만나보세요.',
+                text: '다양한 사람들의 다양한 레시피들을 만나보세요.',
                 btn: '레시피 보러가기',
                 to: '/recipe'
             },
@@ -24,12 +24,12 @@ class IntroContainer extends Component {
                 to: '/fridge'
             },
             {
-                text: '일단 아무 텍스트나 적는다 여러분들의 특색있는 레시피들을 공유해주세요.',
+                text: '여러분들의 특색있는 레시피들을 공유해보세요.',
                 btn: '레시피 공유하러 가기',
                 to: '/shareRecipe'
             },
             {
-                text: '일단 아무 텍스트나 적는다 요리하는데 다른 사람에게 공유하고싶은 정보가 있으신가요? 다른 사용자들과 함께 나눠봐요.',
+                text: '요리하는데 다른 사람에게 공유하고싶은 정보가 있으신가요? 다른 사용자들과 함께 나눠봐요.',
                 btn: '커뮤니티로 가기',
                 to: '/community'
             },
