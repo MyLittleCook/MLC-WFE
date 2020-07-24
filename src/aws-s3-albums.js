@@ -14,33 +14,6 @@ var s3 = new AWS.S3({
     params: { Bucket: albumBucketName }
 });
 
-export const createAlbum = (albumName) => {
-    let date = new Date();
-    albumName = `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}-${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}_${albumName.trim().replace(/ /g, "_")}`;
-    if (!albumName) {
-        return alert("Album names must contain at least one non-space character.");
-    }
-    if (albumName.indexOf("/") !== -1) {
-        return alert("Album names cannot contain slashes.");
-    }
-    var albumKey = encodeURIComponent(albumName);
-    s3.headObject({ Key: albumKey }, (err, data) => {
-        if (!err) {
-            return alert("Album already exists.");
-        }
-        if (err.code !== "NotFound") {
-            return alert("There was an error creating your album: " + err.message);
-        }
-        s3.putObject({ Key: albumKey }, (err, data) => {
-            if (err) {
-                return alert("There was an error creating your album: " + err.message);
-            }
-            console.log("Successfully created album.");
-        });
-    });
-    return albumName;
-}
-
 export const addPhoto = async (file) => {
     let photoKey = file.name;
   
@@ -59,6 +32,6 @@ export const addPhoto = async (file) => {
         console.log("Successfully uploaded photo.");
         return data.Location;
     } catch (err) {
-        return alert("업로드 못함ㅅㄱ");
+        return alert("이미지 업로드에 실패하셨습니다.");
     }
 }
