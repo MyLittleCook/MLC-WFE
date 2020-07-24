@@ -1,16 +1,16 @@
-import { SET_RECIPE_SEARCH, ADD_RECIPE_LIST } from '../actions/ActionTypes'
+import { SET_RECIPE_SEARCH, SET_RECIPE_CATEGORY } from '../actions/ActionTypes'
 
 const initialState = {
     recipeSearch: '',
-    recipeList: []
+    recipeCategory: 'ALL'
 };
 
 function recipe(state = initialState, action) {
     switch (action.type) {
         case SET_RECIPE_SEARCH:
-            return { ...state, recipeSearch: action.recipeSearch };
-        case ADD_RECIPE_LIST:
-            return { ...state, recipeList: action.recipeList };
+            return { ...state, recipeSearch: action.recipeSearch, recipeCategory: '' };
+        case SET_RECIPE_CATEGORY:
+            return { ...state, recipeCategory: action.recipeCategory, recipeSearch: '' };
         default:
             return state;
     }

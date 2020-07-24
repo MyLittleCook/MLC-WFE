@@ -15,10 +15,10 @@ export const setRecipeSearch = (data) => ({
     recipeSearch: data
 });
 
-export const addRecipeList = (data) => ({
-    type: types.ADD_RECIPE_LIST,
-    recipeList: data
-});
+export const setRecipeCategory = (data) => ({
+    type: types.SET_RECIPE_CATEGORY,
+    recipeCategory: data
+})
 
 export const setShareRecipeData = (data) => ({
     type: types.SET_SHARE_RECIPE_DATA,
