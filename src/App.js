@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setIsSignIn, setNickName } from './actions/index';
@@ -31,7 +31,7 @@ class App extends Component {
             }
         })
         .then(response => {
-            sessionStorage.setItem('ACT', response.data.result.accessToken);
+            sessionStorage.setItem('ACT', response.data.result.accessJWT);
             this.getInfo();
             setIsSignIn(true);
             toast.success('자동 로그인 성공!');
@@ -62,11 +62,14 @@ class App extends Component {
             <BrowserRouter>
                 <ToastContainer />
                 <Header />
-                <Route exact path="/" component={Home} />
-                <Route path="/recipe" component={Recipe} />
-                <Route path="/shareRecipe" component={ShareRecipe} />
-                <Route path="/fridge" component={Fridge} />
-                <Route path="/community" component={Community} />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/recipe" component={Recipe} />
+                    <Route path="/shareRecipe" component={ShareRecipe} />
+                    <Route path="/fridge" component={Fridge} />
+                    <Route path="/community" component={Community} />
+                    {/* <Redirect path="*" to="/" /> */}
+                </Switch>
                 <Footer />
             </BrowserRouter>
         );
