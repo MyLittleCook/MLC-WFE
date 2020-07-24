@@ -84,18 +84,6 @@ class Info extends Component {
                     </div>
                     <div className="share-recipe__contents__info__ingredient__list">
                         {ingredientList.length !== 0 ? ingredientList : <div className="share-recipe__contents__info__ingredient__list__box">등록된 재료가 없습니다.</div>}
-                        {/* <div className="share-recipe__contents__info__ingredient__list__box">
-                            <p>당근</p>
-                            <p>디자인못생겼다.</p>
-                        </div>
-                        <div className="share-recipe__contents__info__ingredient__list__box">
-                            <p>당근</p>
-                            <p>프로토 타입이니까 괜찮아</p>
-                        </div>
-                        <div className="share-recipe__contents__info__ingredient__list__box">
-                            <p>당근</p>
-                            <p>1kg</p>
-                        </div> */}
                     </div>
                 </div>
             </article>

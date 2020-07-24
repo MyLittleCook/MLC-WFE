@@ -25,7 +25,10 @@ class IngredientModal extends Component {
     addIngredient = () => {
         const { ingredientName, ingredientDes } = this.state;
         const { shareRecipeDataObj, openIngredientModal } = this.props;
-        shareRecipeDataObj.ingredients.push({name:ingredientName,detail:ingredientDes});
+
+        if(ingredientName !== '') {
+            shareRecipeDataObj.ingredients.push({name:ingredientName,detail:ingredientDes});
+        }
         openIngredientModal(false);
     }
 

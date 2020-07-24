@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setShareRecipeData } from '../../../actions/index';
-import { addPhoto } from '../../../aws-s3-albums';
 import { toast } from 'react-toastify';
+import { addPhoto } from '../../../aws-s3-albums';
 
 import './Top.scss';
 
@@ -60,8 +61,6 @@ class Top extends Component {
                 i++;
             }
         }
-
-        // console.log(shareRecipeDataObj);
     }
 
     uploadRecipe = () => {
@@ -85,8 +84,8 @@ class Top extends Component {
             toast.error("레시피 공유 실패!");
             console.log(reject);
         })
-        
-        // this.props.history.push('/recipe');
+
+        this.props.history.push('/recipe');
     }
 
     render() {
@@ -108,7 +107,9 @@ const mapDispatchToProps = dispatch => ({
     setShareRecipeData: data => dispatch(setShareRecipeData(data))
 })
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Top);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Top)
+);
