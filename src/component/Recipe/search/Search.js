@@ -3,27 +3,9 @@ import { connect } from 'react-redux';
 import { setRecipeSearch } from '../../../actions/index.js';
 
 import './Search.scss';
-import './CategoryBox.scss';
+import CategoryBox from './CategoryBox'
 
 import searchIcon from '../../../assets/icon/search.png'
-
-class CategoryBox extends Component {
-
-
-    render() {
-        const { icon, icon_C, txt, name } = this.props;
-
-        return (
-            <a className={'recipe__search__category__box index-' + name}>
-                <div>
-                    <img className="box__icon" src={icon}/>
-                    <img className="box__iconC" src={icon_C}/>
-                </div>
-                <p>{txt}</p>
-            </a>
-        )
-    }
-}
 
 class Search extends Component {
     state = {
@@ -45,9 +27,10 @@ class Search extends Component {
     }
 
     inputEnter = (e) => {
-        const { addRecipeList } = this.props;
+        const { setRecipeSearch } = this.props;
+
         if(e.key === 'Enter') {
-            addRecipeList(e.target.value);
+            setRecipeSearch(e.target.value);
         }
     }
 

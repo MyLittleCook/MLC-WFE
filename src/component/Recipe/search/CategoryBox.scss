@@ -1,118 +1,111 @@
-.recipe__search__category {
-    &__box {
-        border-radius: 5px;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        position: relative;
-        width: 150px;
-        height: 175px;
-        cursor: pointer;
+.recipe__search__category__box {
+    border-radius: 5px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    width: 150px;
+    height: 175px;
+    cursor: pointer;
 
-        &:before {
-            content: "";
-            border-radius: 5px;
-            position: absolute;
-            width: 135px;
-            height: 160px;
-            background-color: #ffffffc9;
-            transition: all 200ms ease-in-out;
+    &:before {
+        content: "";
+        border-radius: 5px;
+        position: absolute;
+        width: 135px;
+        height: 160px;
+        background-color: #ffffffc9;
+        transition: all 200ms ease-in-out;
+    }
+
+    &:hover div {
+        .box__icon {
+            visibility: hidden;
+            opacity: 0;
         }
 
-        &:hover div {
+        .box__iconC {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    &:link {
+        text-decoration: none;
+    }
+
+    div{
+        position: relative;
+        z-index: 1;
+        width: 100px;
+        height: 100px;
+
+        img {
+            position: absolute;
+            width: 100px;
+        }
+
+        .box__icon {
+            visibility: visible;
+            opacity: 1;
+            transition: all 300ms ease-in-out;
+        }
+        
+        .box__iconC {
+            visibility: hidden;
+            opacity: 0;
+            transition: all 300ms ease-in-out;
+        }
+    }
+
+    p {
+        z-index: 1;
+        color: black;
+        font: {
+            size: 1.5rem;
+            weight: bold;
+        }
+    }
+
+    &-all {
+        background-color: #EB5757;
+    }
+    
+    &-rice {
+        background-color: #F2994A;
+    }
+    
+    &-sidedish {
+        background-color: #F2C94C;
+    }
+    
+    &-stew {
+        background-color: #219653;
+    }
+    
+    &-dish {
+        background-color: #2F80ED;
+    }
+    
+    &-dessert {
+        background-color: #56CCF2;
+    }
+    
+    &-etc {
+        background-color: #9B51E0;
+    }
+
+    &--clicked {
+        div {
             .box__icon {
                 visibility: hidden;
                 opacity: 0;
-            }
-
-            .box__iconC {
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-
-        &:link {
-            text-decoration: none;
-        }
-
-        div{
-            position: relative;
-            z-index: 1;
-            width: 100px;
-            height: 100px;
-
-            img {
-                position: absolute;
-                width: 100px;
-            }
-
-            .box__icon {
-                visibility: visible;
-                opacity: 1;
-                transition: all 300ms ease-in-out;
             }
             
             .box__iconC {
-                visibility: hidden;
-                opacity: 0;
-                transition: all 300ms ease-in-out;
-            }
-        }
-
-        p {
-            z-index: 1;
-            color: black;
-            font: {
-                size: 1.5rem;
-                weight: bold;
-            }
-        }
-    }
-
-    .index {
-        &-all {
-            background-color: #EB5757;
-        }
-        
-        &-rice {
-            background-color: #F2994A;
-        }
-        
-        &-sidedish {
-            background-color: #F2C94C;
-        }
-        
-        &-stew {
-            background-color: #219653;
-        }
-        
-        &-dish {
-            background-color: #2F80ED;
-        }
-        
-        &-dessert {
-            background-color: #56CCF2;
-        }
-        
-        &-etc {
-            background-color: #9B51E0;
-        }
-    }
-
-    .click {
-        &all, &rice, &sidedish, &stew, &dish, &dessert, &etc {
-
-            div {
-                .box__icon {
-                    visibility: hidden;
-                    opacity: 0;
-                }
-                
-                .box__iconC {
-                    visibility: visible;
-                    opacity: 1;
-                }
+                visibility: visible;
+                opacity: 1;
             }
         }
     }
