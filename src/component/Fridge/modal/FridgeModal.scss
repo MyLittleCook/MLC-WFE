@@ -1,0 +1,82 @@
+.fridge-modal {
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000bf;
+
+    &__box {
+        box-sizing: border-box;
+        padding: 10px 0;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        width: 800px;
+        height: 400px;
+        background-color: #FFFFFF;
+        cursor: default;
+
+        &__top {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 95%;
+            height: 15%;
+            font: {
+                size: 2rem;
+                family: NotoSans;
+                weight: bold;
+            }
+
+            a {
+                color: #4267B2;
+                font-size: 1.4rem;
+                cursor: pointer;
+            }
+        }
+
+        &__name {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 95%;
+            height: 15%;
+
+            input {
+                width: 100%;
+                font-size: 1.5rem;
+            }
+        }
+
+        &__info {
+            width: 95%;
+            height: 50%;
+
+            textarea {
+                width: 100%;
+                height: 100%;
+                font-size: 1.5rem;
+                resize: none;
+            }
+        }
+
+        &__shelf-life {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 95%;
+            height: 15%;
+
+            input {
+                width: 100%;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
