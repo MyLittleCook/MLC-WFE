@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setShareRecipeData } from '../../../actions/index';
+import { setIngredientModalShow } from '../../../actions/index';
 
 import './IngredientModal.scss'
 
@@ -24,23 +24,27 @@ class IngredientModal extends Component {
 
     addIngredient = () => {
         const { ingredientName, ingredientDes } = this.state;
-        const { shareRecipeDataObj, openIngredientModal } = this.props;
+        const { shareRecipeDataObj, setIngredientModalShow } = this.props;
 
         if(ingredientName !== '') {
             shareRecipeDataObj.ingredients.push({name:ingredientName,detail:ingredientDes});
         }
-        openIngredientModal(false);
+        setIngredientModalShow(false);
     }
 
     render() {
-        const { openIngredientModal } = this.props;
+        const { modalShow, setIngredientModalShow } = this.props;
 
         const removeEvent = (e) => {
             e.stopPropagation();
         }
 
         return (
-            <div className="ingredient-modal" onClick={() => {openIngredientModal(false)}}>
+            <>
+            {
+            modalShow ?
+            <>
+            <div className="ingredient-modal" onClick={() => {setIngredientModalShow(false)}}>
                 <div className="ingredient-modal__box" onClick={removeEvent}>
                     <div className="ingredient-modal__box__top">
                         <p>재료 추가하기</p>
@@ -54,14 +58,25 @@ class IngredientModal extends Component {
                     </div>
                 </div>
             </div>
+            </>
+            :
+            null
+            }
+            </>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    shareRecipeDataObj: state.share.shareRecipeData
+    shareRecipeDataObj: state.share.shareRecipeData,
+    modalShow: state.modal.ingredientModalShow
+})
+
+const mapDispatchToProps = dispatch => ({
+    setIngredientModalShow: bool => dispatch(setIngredientModalShow(bool))
 })
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(IngredientModal);

@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setRecipeImageFile } from '../../../actions/index';
+import { setRecipeImageFile, setIngredientModalShow } from '../../../actions/index';
 
 import './Info.scss';
-import IngredientModal from '../modal/IngredientModal';
 
 import deleteIcon from '../../../assets/icon/delete.png';
 
 class Info extends Component {
     state = {
-        IngredientModalShow: false,
         file : null,
         previewURL : '',
         data_category: '기타'
@@ -48,17 +46,10 @@ class Info extends Component {
         })
     }
 
-    openIngredientModal = (b) => {
-        this.setState({
-            IngredientModalShow: b
-        })
-    }
-
     render() {
         const ingredientList = this.props.shareRecipeDataObj.ingredients.map((d, i) => <div className="share-recipe__contents__info__ingredient__list__box" key={i}><p>{d.name}</p><p>{d.detail}</p></div>);
 
         return(
-            <>
             <article className="share-recipe__contents__info">
                 <div className="share-recipe__contents__info__img">
                     <input type="file" id="shareRecipeImgUpload" accept="image/*" onChange={this.getImgFile}/>
@@ -80,15 +71,13 @@ class Info extends Component {
                 <div className="share-recipe__contents__info__ingredient">
                     <div className="share-recipe__contents__info__ingredient__top">
                         <p>재료</p>
-                        <button onClick={() => {this.openIngredientModal(true)}}></button>
+                        <button onClick={() => {this.props.setIngredientModalShow(true)}}></button>
                     </div>
                     <div className="share-recipe__contents__info__ingredient__list">
                         {ingredientList.length !== 0 ? ingredientList : <div className="share-recipe__contents__info__ingredient__list__box">등록된 재료가 없습니다.</div>}
                     </div>
                 </div>
             </article>
-            {this.state.IngredientModalShow ? <IngredientModal openIngredientModal={this.openIngredientModal}/> : null}
-            </>
         )
     }
 }
@@ -98,7 +87,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setRecipeImageFile: img => dispatch(setRecipeImageFile(img))
+    setRecipeImageFile: img => dispatch(setRecipeImageFile(img)),
+    setIngredientModalShow: bool => dispatch(setIngredientModalShow(bool))
 })
 
 export default connect(

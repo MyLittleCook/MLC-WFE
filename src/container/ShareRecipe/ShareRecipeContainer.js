@@ -5,6 +5,7 @@ import { setSignInUpModalShow, setShareRecipeData, setRecipeImageFile, setStepIm
 import { toast } from 'react-toastify';
 
 import ContentsContainer from './contents/ContentsContainer';
+import IngredientModal from '../../component/ShareRecipe/modal/IngredientModal';
 
 class ShareRecipe extends Component {
     componentDidMount() {
@@ -35,6 +36,7 @@ class ShareRecipe extends Component {
         return (
             <section className="share-recipe">
                 <ContentsContainer />
+                <IngredientModal />
             </section>
         )
     }
