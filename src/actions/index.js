@@ -39,3 +39,13 @@ export const setSignInUpModalShow = (bool) => ({
     type: types.SET_SIGNINUP_MODAL_SHOW,
     signInUpModalShow: bool
 })
+
+export const setIngredientModalShow = (bool) => ({
+    type: types.SET_INGREDIENT_MODAL_SHOW,
+    ingredientModalShow: bool
+})
+
+export const setFridgeModalShow = (obj) => ({
+    type: types.SET_FRIDGE_MODAL_SHOW,
+    fridgeModalShow: obj
+})
