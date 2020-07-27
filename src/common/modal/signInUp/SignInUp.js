@@ -25,7 +25,7 @@ class SignInUp extends Component {
         return (
             <>
             {
-            this.props.signInUpModalShow ?
+            this.props.modalShow ?
             <>
                 <div className="signInUp__overlay" onClick={() => this.props.setSignInUpModalShow(false)} >
                     <div className="signInUp__wrapper" onClick={removeEvent}>
@@ -51,9 +51,8 @@ class SignInUp extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => ({
-    signInUpModalShow: state.modal.signInUpModalShow
+    modalShow: state.modal.signInUpModalShow
 })
 
 const mapDispatchToProps = dispatch => ({
