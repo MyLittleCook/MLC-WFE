@@ -1,12 +1,13 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './RecipeBox.scss';
 
-const RecipeBox = ({ titleImage, title, category, madeBy, type }) => {
+const RecipeBox = ({ recipeImage, title, category, madeBy, type, id, history }) => {
     return (
-        <a className="recipe__list__wrapper__contents__recipe-box">
+        <a className="recipe__list__wrapper__contents__recipe-box" onClick={() => history.push(`/recipe/${id}`)}>
             <div className="recipe__list__wrapper__contents__recipe-box__img">
-                <img src={titleImage}/>
+                <img src={recipeImage}/>
             </div>
             <div className="recipe__list__wrapper__contents__recipe-box__txt">
                 <h4 className="recipe__list__wrapper__contents__recipe-box__txt__title">{title}</h4>
@@ -17,4 +18,4 @@ const RecipeBox = ({ titleImage, title, category, madeBy, type }) => {
     )
 }
 
-export default RecipeBox;
+export default withRouter(RecipeBox);
