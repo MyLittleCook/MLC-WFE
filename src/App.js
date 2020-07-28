@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setIsSignIn, setNickName } from './actions/index';
@@ -9,6 +9,7 @@ import './App.scss';
 import Header from './common/header/Header';
 import Home from './container/Home/HomeContainer';
 import Recipe from './container/Recipe/RecipeContainer';
+import RecipeDetail from './container/Recipe/detail/DetailContainer';
 import ShareRecipe from './container/ShareRecipe/ShareRecipeContainer';
 import Fridge from './container/Fridge/FridgeContainer';
 import Community from './container/Community/CommunityContainer';
@@ -64,11 +65,12 @@ class App extends Component {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/recipe" component={Recipe} />
+                    <Route exact path="/recipe" component={Recipe} />
+                    <Route path="/recipe/:id" component={RecipeDetail} />
                     <Route path="/shareRecipe" component={ShareRecipe} />
                     <Route path="/fridge" component={Fridge} />
                     <Route path="/community" component={Community} />
-                    {/* <Redirect path="*" to="/" /> */}
+                    <Redirect path="*" to="/" />
                 </Switch>
                 <Footer />
             </BrowserRouter>
