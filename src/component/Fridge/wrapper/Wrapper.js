@@ -5,13 +5,37 @@ import { setFridgeModalShow } from '../../../actions/index';
 import './Wrapper.scss';
 
 class Wrapper extends Component {
-    listScrolled = (e) => {
-        console.log('scrollTop: ',e);
-        // console.log('scroll: ', e.srcElement.body);
+    state = {
+        prevY: 0
+    };
+
+    componentDidMount() {
+        var options = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 1.0
+        };
+        this.observer = new IntersectionObserver(
+            this.handleObserver.bind(this),
+            options
+        );
+        this.observer.observe(this.loadingRef);
+    }
+    
+    handleObserver(entities) {
+        const { loadData } = this.props;
+
+        const y = entities[0].boundingClientRect.y;
+        if (this.state.prevY > y) {
+            loadData();
+        }
+        this.setState({
+            prevY: y
+        });
     }
 
     render() {
-        const { foodList, setFridgeModalShow } = this.props
+        const { foodList, setFridgeModalShow, loadingTextCSS } = this.props
         return (
             <div className="fridge__list__wrapper">
                 <div className="fridge__list__top">
@@ -20,9 +44,10 @@ class Wrapper extends Component {
                     <p className="fridge__list__top__shelf-life">남은 유통기한</p>
                     <div className="fridge__list__top__add-button" onClick={() => setFridgeModalShow({show: true, kind: 'add'})}></div>
                 </div>
-                <div className="fridge__list__contents" onScroll={this.listScrolled}>
+                <div className="fridge__list__contents">
                     <div>
                         {foodList}
+                        <div ref={loadingRef => (this.loadingRef = loadingRef)}></div>
                     </div>
                 </div>
             </div>
