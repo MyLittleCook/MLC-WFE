@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
 
 import './ListContainer.scss'
 import Box from '../../../component/Fridge/box/Box';
@@ -19,9 +18,9 @@ class ListContainer extends Component {
         this.getData();
     }
 
-    componentWillReceiveProps(nextProps) {
+    async componentWillReceiveProps(nextProps) {
         if(nextProps.fridgeModalShow !== this.props.fridgeModalShow && !nextProps.fridgeModalShow) {
-            this.setState({
+            await this.setState({
                 fridgePage: 1,
                 loadingData: true
             })
@@ -44,6 +43,8 @@ class ListContainer extends Component {
     getData = () => {
         const { fridgePage } = this.state;
 
+        console.log(fridgePage)
+
         axios.get('https://mlc.janghoseung.com/fridge/food/list', {
             headers: {
                 Authorization: sessionStorage.getItem('ACT')
@@ -54,8 +55,7 @@ class ListContainer extends Component {
         })
         .then((response) => {
             if(response.data.result.length === 0) {
-                toast.error("등록된 음식이 더이상 없습니다.");
-                this.list.push({name: '등록된 음식이 더이상 없습니다.', id: 'sa1as651s5df16as5d6f16s1a6f5'})
+                this.list.push({name: '등록된 음식이 더이상 없습니다.', id: 'noMoreList'})
                 this.setState({
                     fridgePage: 0
                 })
@@ -80,7 +80,7 @@ class ListContainer extends Component {
         
         return (
             <section className="fridge__list">
-                <Wrapper foodList={foodBox} loadData={this.loadMoreData}/>
+                <Wrapper foodList={foodBox} loadData={this.loadMoreData} loadingTextCSS={this.state.loadingData}/>
             </section>
         )
     }
