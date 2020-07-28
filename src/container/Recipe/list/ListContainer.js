@@ -22,8 +22,8 @@ class ListContainer extends Component {
         window.addEventListener("scroll", this.loadMoreData);
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
+    async componentWillReceiveProps(nextProps) {
+        await this.setState({
             recipePage: 1,
             loadingData: true,
             searchFrom: nextProps.recipeSearchString,
@@ -125,7 +125,7 @@ class ListContainer extends Component {
     }
 
     render() {
-        let recipeBox = this.list.map((data, i) => <RecipeBox titleImage={data.recipeImage} title={data.name} category={data.category} madeBy={data.author.nickname} type={data.category === "밥" ? 1 : (data.category === "반찬" ? 2 : (data.category === "국 & 찌개" ? 3 : (data.category === "일품" ? 4 : (data.category === "후식" ? 5 : 6))))} key={i}/>)
+        let recipeBox = this.list.map((data) => <RecipeBox recipeImage={data.recipeImage} title={data.name} category={data.category} madeBy={data.author.nickname} type={data.category === "밥" ? 1 : (data.category === "반찬" ? 2 : (data.category === "국 & 찌개" ? 3 : (data.category === "일품" ? 4 : (data.category === "후식" ? 5 : 6))))} id={data.id} history={this.props.history} key={data.id}/>)
 
         return (
             <section className="recipe__list">
@@ -135,7 +135,7 @@ class ListContainer extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     recipeSearchString: state.recipe.recipeSearch,
     recipeCategoryString: state.recipe.recipeCategory
 });
