@@ -1,0 +1,22 @@
+.detail-recipe__info {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    height: 450px;
+
+    &__img {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 55%;
+        height: 100%;
+        background-color: #949494;
+        overflow: hidden;
+    }
+
+    &__txt {
+        width: 40%;
+    }
+}
