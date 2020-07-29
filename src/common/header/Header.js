@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setIsSignIn, setSignInUpModalShow } from '../../actions/index';
+import { toast } from 'react-toastify';
 
 import logo from '../../assets/logo/Logo_M.png';
 import SignInUp from '../modal/signInUp/SignInUp'
@@ -35,9 +36,10 @@ class Header extends Component {
     }
 
     signOut = () => {
-        localStorage.removeItem('ACT');
+        sessionStorage.removeItem('ACT');
         localStorage.removeItem('RFT');
         this.props.setIsSignIn(false);
+        toast.success('로그아웃 되셨습니다.');
     }
     
     render() {
