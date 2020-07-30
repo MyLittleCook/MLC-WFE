@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+import './Top.scss';
+
 const Top = ({ isOwner, id, history }) => {
     const recipeDelete = () => {
         axios.delete(`https://mlc.janghoseung.com/recipe/${id}`, {
@@ -25,7 +27,7 @@ const Top = ({ isOwner, id, history }) => {
         <>
             <article className="detail-recipe__top">
                 <a>수정</a>
-                <a onClick={recipeDelete}>삭제</a>
+                <a className="detail-recipe__top__delete" onClick={recipeDelete}>삭제</a>
             </article>
         </>
         :

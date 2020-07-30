@@ -1,0 +1,14 @@
+.detail-recipe__top {
+    padding: 10px 0;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 1300px;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &__delete {
+        margin-left: 20px;
+    }
+}
