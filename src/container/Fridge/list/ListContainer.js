@@ -43,8 +43,6 @@ class ListContainer extends Component {
     getData = () => {
         const { fridgePage } = this.state;
 
-        console.log(fridgePage)
-
         axios.get('https://mlc.janghoseung.com/fridge/food/list', {
             headers: {
                 Authorization: sessionStorage.getItem('ACT')
@@ -60,7 +58,7 @@ class ListContainer extends Component {
                     fridgePage: 0
                 })
             } else {
-                console.log('Fridge response: ', response.data.result)
+                console.log('Fridge response: ', response.data.result);
                 response.data.result.forEach(d => {
                     this.list.push(d);
                 });
@@ -80,7 +78,7 @@ class ListContainer extends Component {
         
         return (
             <section className="fridge__list">
-                <Wrapper foodList={foodBox} loadData={this.loadMoreData} loadingTextCSS={this.state.loadingData}/>
+                <Wrapper foodList={foodBox} loadData={this.loadMoreData}/>
             </section>
         )
     }

@@ -19,8 +19,6 @@ class Box extends Component {
 
         let shelfLifeSimple = '';
 
-        console.log
-
         if(!shelfLife) {
             shelfLifeSimple = '유통기한 등록 X';
         } else {

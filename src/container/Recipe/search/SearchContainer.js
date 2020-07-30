@@ -43,7 +43,7 @@ class SearchContainer extends Component {
                 name: 'stew',
                 icon: stew,
                 icon_C: stew_C,
-                txt: '국 & 찌개'
+                txt: '국&찌개'
             },
             {
                 name: 'dish',

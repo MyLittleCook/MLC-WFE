@@ -9,6 +9,7 @@ import RecipeBox from '../../../component/Recipe/list/RecipeBox';
 
 class ListContainer extends Component {
     state = {
+        recipeList: [],
         recipePage: 1,
         loadingData: false,
         searchFrom: '',
@@ -23,13 +24,14 @@ class ListContainer extends Component {
     }
 
     async componentWillReceiveProps(nextProps) {
+        this.list = [];
         await this.setState({
+            recipeList: this.list,
             recipePage: 1,
             loadingData: true,
             searchFrom: nextProps.recipeSearchString,
             categoryFrom: nextProps.recipeCategoryString
         })
-        this.list = [];
         this.debounce(this.getData, 200)();
     }
 
@@ -114,6 +116,7 @@ class ListContainer extends Component {
                     this.list.push(d);
                 });
                 this.setState({
+                    recipeList: this.list,
                     recipePage: recipePage+1,
                     loadingData: false
                 })
@@ -125,7 +128,9 @@ class ListContainer extends Component {
     }
 
     render() {
-        let recipeBox = this.list.map((data) => <RecipeBox recipeImage={data.recipeImage} title={data.name} category={data.category} madeBy={data.author.nickname} type={data.category === "밥" ? 1 : (data.category === "반찬" ? 2 : (data.category === "국 & 찌개" ? 3 : (data.category === "일품" ? 4 : (data.category === "후식" ? 5 : 6))))} id={data.id} history={this.props.history} key={data.id}/>)
+        const { recipeList } = this.state;
+
+        let recipeBox = recipeList.map((data) => <RecipeBox recipeImage={data.recipeImage} title={data.name} category={data.category} madeBy={data.author.nickname} type={data.category === "밥" ? 1 : (data.category === "반찬" ? 2 : (data.category === "국 & 찌개" ? 3 : (data.category === "일품" ? 4 : (data.category === "후식" ? 5 : 6))))} id={data.id} history={this.props.history} key={data.id}/>);
 
         return (
             <section className="recipe__list">

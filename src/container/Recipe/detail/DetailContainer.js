@@ -72,12 +72,12 @@ class DetailContainer extends Component {
     render () {
         const { id, name, category, recipeImage, nickname, ingredients, likes, isLiked, steps, isOwner } = this.state;
 
-        let stepList = steps.map((v, i) => <StepBox image={v.stepImage} content={v.content} number={i} key={i}/>);
+        let stepList = steps.map((v, i) => <StepBox image={v.stepImage} content={v.content} number={i+1} key={i}/>);
 
         return(
             <section className="detail-recipe">
+                <Top isOwner={isOwner} id={id} history={this.props.history}/>
                 <section className="detail-recipe__wrapper">
-                    <Top isOwner={isOwner} id={id} history={this.props.history}/>
                     <Info title={name} category={category} recipeImage={recipeImage} ingredients={ingredients} nickname={nickname} likes={likes} isLiked={isLiked} id={id}/>
                     <Step stepList={stepList}/>
                 </section>

@@ -10,7 +10,7 @@ class Wrapper extends Component {
     };
 
     componentDidMount() {
-        var options = {
+        let options = {
             root: null,
             rootMargin: "0px",
             threshold: 1.0
@@ -35,7 +35,7 @@ class Wrapper extends Component {
     }
 
     render() {
-        const { foodList, setFridgeModalShow, loadingTextCSS } = this.props
+        const { foodList, setFridgeModalShow } = this.props
         return (
             <div className="fridge__list__wrapper">
                 <div className="fridge__list__top">
