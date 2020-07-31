@@ -35,16 +35,21 @@
         }
 
         &__card {
-            margin-right: 10px;
+            margin-left: 10px;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(2, 1fr);
             gap: 3px;
         }
 
         &__list {
+            margin-left: 10px;
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
             gap: 4px;
+
+            > div:first-child {
+                display: none;
+            }
         }
     }
 
