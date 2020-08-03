@@ -1,5 +1,20 @@
 .footer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 300px;
+    height: 80px;
     background-color: #212121;
+
+    &__contents {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 960px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
 }
