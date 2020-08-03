@@ -1,41 +1,53 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setRecipeView } from '../../../actions/index';
+import { toast } from 'react-toastify';
 
 import './ListWrapper.scss'
 
 class ListWrapper extends Component {
     state = {
-        viewList: false
+        recipeView: 'card'
+    }
+    
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.recipeView !== prevState) {
+            return { 
+                recipeView: nextProps.recipeView
+            };
+        }
+        return null;
     }
 
     changeView = () => {
-        const { viewList } = this.state;
-        if(viewList) {
-            this.setState({
-                viewList: false
-            })
+        const { recipeView } = this.state;
+        const { setRecipeView } = this.props;
+
+        if(recipeView === 'list') {
+            setRecipeView('card');
+            toast.info('Card View', { autoClose: 3000 });
         } else {
-            this.setState({
-                viewList: true
-            })
+            setRecipeView('list');
+            toast.info('List View', { autoClose: 3000 });
         }
     }
 
     render() {
-        const { viewList } = this.state;
+        const { recipeView } = this.state;
         const { recipes } = this.props;
         return (
             <div className="recipe__list__wrapper">
                 <article className="recipe__list__wrapper__top">
                     <a className="recipe__list__wrapper__top__newest">최신순</a>
                     <a className="recipe__list__wrapper__top__like">좋아요순</a>
-                    <div className={`recipe__list__wrapper__top__${viewList ? 'list' : 'card'}`} onClick={this.changeView}>
+                    <div className={`recipe__list__wrapper__top__${recipeView}`} onClick={this.changeView}>
                         <div></div>
                         <div></div>
                         <div></div>
                         <div></div>
                     </div>
                 </article>
-                <article className="recipe__list__wrapper__contents">
+                <article className={`recipe__list__wrapper__contents recipe__list__wrapper__contents--${recipeView}`}>
                     {recipes}
                 </article>
             </div>
@@ -43,4 +55,15 @@ class ListWrapper extends Component {
     }
 }
 
-export default ListWrapper;
+const mapStateToProps = state => ({
+    recipeView: state.recipe.recipeView
+})
+
+const mapDispatchToProps = dispatch => ({
+    setRecipeView: type => dispatch(setRecipeView(type))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ListWrapper);

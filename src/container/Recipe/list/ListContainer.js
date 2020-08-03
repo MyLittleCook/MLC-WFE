@@ -74,7 +74,7 @@ class ListContainer extends Component {
         const { loadingData } = this.state;
         const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
 
-        if(scrollHeight - clientHeight - scrollTop <= 400 && !loadingData) {
+        if(scrollHeight - clientHeight - scrollTop <= 200 && !loadingData) {
             this.setState({
                 loadingData: true
             })

@@ -10,9 +10,13 @@ const RecipeBox = ({ recipeImage, title, category, madeBy, type, id, history }) 
                 <img src={recipeImage}/>
             </div>
             <div className="recipe__list__wrapper__contents__recipe-box__txt">
-                <h4 className="recipe__list__wrapper__contents__recipe-box__txt__title">{title}</h4>
-                <p className={"recipe__list__wrapper__contents__recipe-box__txt__category type-" + type}>{category}</p>
-                <p className="recipe__list__wrapper__contents__recipe-box__txt__madeby">{`RecipeBy ${madeBy}`}</p>
+                <div>
+                    <h4 className="recipe__list__wrapper__contents__recipe-box__txt__title">{title}</h4>
+                    <p className={"recipe__list__wrapper__contents__recipe-box__txt__category type-" + type}>{category}</p>
+                </div>
+                <div>
+                    <p className="recipe__list__wrapper__contents__recipe-box__txt__madeby">{`RecipeBy ${madeBy}`}</p>
+                </div>
             </div>
         </a>
     )
