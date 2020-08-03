@@ -20,6 +20,11 @@ export const setRecipeCategory = (data) => ({
     recipeCategory: data
 })
 
+export const setRecipeView = (type) => ({
+    type: types.SET_RECIPE_VIEW,
+    recipeView: type
+})
+
 export const setShareRecipeData = (data) => ({
     type: types.SET_SHARE_RECIPE_DATA,
     shareRecipeData: data
