@@ -35,13 +35,13 @@
         text-decoration: none;
     }
 
-    div{
+    > div{
         position: relative;
         z-index: 1;
         width: 100px;
         height: 100px;
 
-        img {
+        > img {
             position: absolute;
             width: 100px;
         }
@@ -97,7 +97,7 @@
     }
 
     &--clicked {
-        div {
+        > div {
             .box__icon {
                 visibility: hidden;
                 opacity: 0;
