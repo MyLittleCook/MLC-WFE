@@ -28,11 +28,11 @@ class IntroContainer extends Component {
                 btn: '레시피 공유하러 가기',
                 to: '/shareRecipe'
             },
-            {
-                text: '요리하는데 다른 사람에게 공유하고싶은 정보가 있으신가요? 다른 사용자들과 함께 나눠봐요.',
-                btn: '커뮤니티로 가기',
-                to: '/community'
-            },
+            // {
+            //     text: '요리하는데 다른 사람에게 공유하고싶은 정보가 있으신가요? 다른 사용자들과 함께 나눠봐요.',
+            //     btn: '커뮤니티로 가기',
+            //     to: '/community'
+            // },
         ],
         homeImg: [
             homeImg_0,

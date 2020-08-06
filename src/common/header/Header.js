@@ -31,7 +31,7 @@ class Header extends Component {
             {title: '레시피', to: '/recipe'},
             {title: '레시피 공유', to: '/shareRecipe'},
             {title: '냉장고 관리', to: '/fridge'},
-            {title: '커뮤니티', to: '/community'}
+            // {title: '커뮤니티', to: '/community'}
         ]
     }
 
